@@ -1,0 +1,33 @@
+package com.test01;
+
+import java.util.Scanner;
+
+public class MTest02 {
+
+	public static void main(String[] args) {
+		
+		while(true) {
+			int i = inputIntValue();
+			int j = inputIntValue();
+			System.out.println("i:"+ i);
+			System.out.println("j:"+ j);
+			
+			if(i == 63 || j == 63) {
+				System.out.println("종료합니다");
+				break;
+			}
+		}
+		
+	}
+	
+	public static int inputIntValue() {
+		
+		int a = 0;
+		
+		System.out.println("숫자를 입력해보세요 : ");
+		Scanner sc = new Scanner(System.in);
+		a=sc.nextInt();
+		sc.close();
+		return a;
+	}
+}

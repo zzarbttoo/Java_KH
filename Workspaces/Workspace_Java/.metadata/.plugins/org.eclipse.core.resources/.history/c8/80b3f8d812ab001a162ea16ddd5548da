@@ -1,0 +1,33 @@
+package com.test02;
+
+public class FruitBasket {
+
+	
+	static int basketSize;
+	int fruitCount;
+	String fruitName;
+	
+	
+	public void basketSetting(String name, int fruit) {
+		
+		basketSize=30;
+		fruitCount=10;
+		
+		fruitName = name;
+		fruitCount= fruitCount + fruit;
+		FruitBasket fb = new FruitBasket();
+		fb.basketPrn();
+		
+	}
+	
+	private void basketPrn(){
+		
+		System.out.println("바구니 안의 과일 : " + fruitName);
+		System.out.println( (basketSize > fruitCount)? fruitName+"의 갯수는 "+ fruitCount+"입니다": "바구니가 넘쳤습니다!");
+		
+		
+	}
+	
+	
+	
+}

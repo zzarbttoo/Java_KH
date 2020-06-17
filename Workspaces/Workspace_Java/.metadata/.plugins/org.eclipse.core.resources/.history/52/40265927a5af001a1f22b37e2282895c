@@ -1,0 +1,51 @@
+package com.test01;
+
+import java.util.Scanner;
+
+public class MTest01 {
+
+	public static void main(String[] args) {
+		
+//		test01();
+		
+		test02();
+	}
+
+	private static void test01() {
+		//ctrl space bar 쓰면 자동 임포트
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("숫자를 입력해 주세요 : ");
+		int a = sc.nextInt();
+		
+		System.out.println("숫자를 다시 입력해 주세요 : ");
+		int b = sc.nextInt();
+		
+		int sum = a + b;
+		System.out.println("입력하신 두 숫자의 합은 " + sum + " 입니다!");
+		
+	}
+	
+	public static void test02() {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("문자를 입력해 주세요 : ");
+		String s1=sc.next();
+		String s2=sc.next();
+		String s3=sc.next();
+		System.out.println("문자 1은 " + s1 + "문자 2는 " + s2 + "문자 3은" + s3);
+		
+		
+	}
+	
+	public static void test03() {
+		
+		Scanner sc = new Scanner(System.in);
+		String hello = sc.nextLine();
+		System.out.println(hello);
+		
+	
+	
+	
+}

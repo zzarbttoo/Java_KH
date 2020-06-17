@@ -1,0 +1,45 @@
+package com.test02;
+
+public class MTest {
+
+	
+	public static void main(String[] args) {
+		
+		FruitBasket bananaBasket = new FruitBasket();
+		bananaBasket.basketSetting("바나나", 10);
+		FruitBasket.basketSize = 20; //static이라서
+//		bananaBasket.basketSize=20;
+		bananaBasket.fruitCount=100;
+//		FruitBasket.fruitCount=150; //non static이기 때문에  static으로 참조할 수 없다
+		System.out.println(bananaBasket.basketSize);
+		
+		FruitBasket appleBasket = new FruitBasket();
+		appleBasket.basketSetting("사과", 21);
+		System.out.println(appleBasket.fruitCount);
+		System.out.println(appleBasket.basketSize);
+		
+		
+		
+		/*
+		 * 
+		 * FruitBasket 클래스에서 문제를 해결하자
+		 * 1. basketSize라는 변수에 숫자 30을 대입하는 코드를 작성하자
+		 * 2. fruitCount라는 변수에 숫자 10을 대입하자
+		 * 3. basketSetting 메소드 내부에서 
+		 *    fruitName변수에다 파라미터 name의 값을 대입하자
+		 *    fruitCount 변수에 있는 값에 파라미터 fruit의 값을 더해서 대입하자
+		 *    basketPrn 메소드를 호출하자
+		 * 4. basketPrn 메소드 내부에서
+		 * 	  1)"바구니 안의 과일:" + 과일 이름 을 출력하자 
+		 * 	  2)basketSize의 값이 fruitCount의 값보다 크거나 같으면 \
+		 * 		과일 이름+"의 갯수는" + 과일 갯수 + "입니다."를 출력하자
+		 * 	  아니라면 
+		 *   "바구니가 넘쳤습니다."를 출력하자
+		 *    단! 삼항 연산자를 사용하자
+		 * 
+		 * 
+		 * 
+		 */
+		
+	}
+}

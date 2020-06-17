@@ -1,0 +1,26 @@
+package com.test03;
+
+public class Score {
+
+	public double getAvg(int i, int j, int k) {
+		
+		return (double) i + j + k / 3 ;
+		
+	}
+	
+	String getGrade(double avg) {
+		
+		String score = null;
+		
+		if (avg >= 90) score = "A";
+		else if (avg > 90 && avg >= 80) score = "B";
+		else if (avg > 80 && avg >= 70) score = "C";
+		else if (avg > 70 && avg >= 60) score = "D";
+		else score = "F";
+		
+		return score;
+		
+	}
+	
+	
+}

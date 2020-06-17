@@ -1,0 +1,17 @@
+package com.test01;
+
+public class MTest {
+
+	
+	//필드
+	//(static) final : 상수화
+	public static final int TEN = 10;
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+	}
+	
+}

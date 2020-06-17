@@ -1,0 +1,8 @@
+package com.cal;
+
+//년 월 일이 주어지면 , 해당 년 원 일의 요일을 출력하자
+//단 Calendar class 사용 금지
+public class DayOfCalendar {
+
+	
+}

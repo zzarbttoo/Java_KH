@@ -1,0 +1,44 @@
+package com.point;
+
+import java.util.Scanner;
+
+public class PointLength {
+
+	
+	/*
+	 * 원점(0, 0) 부터 (x, y) 까지의 거리를 구하는 메소드를 만들자
+	 * 
+	 */
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("x 좌표 : ");
+		int x= sc.nextInt();
+		System.out.println("y 좌표: ");
+		int y = sc.nextInt();
+		
+		double d = pLength(x, y);
+		System.out.printf("(0, 0) 부터 (%d, %d) 까지의 거리는 %.2f 입니다", x,y, d);
+		
+		
+		
+	}
+
+	private static double pLength(int x, int y) {
+	
+//		double pL = 0;
+//		pL=Math.sqrt(Math.pow(x, 2) + Math.pow(x, 2));
+		//return pL;
+		
+		//root(x*x + y*y) : Math.hypot(x, y);
+		//pow가 double을 받는 함수이다
+//		double x2 =  Math.pow(x, 2);
+//		double y2 =  Math.pow(y, 2);
+//		double res = Math.sqrt(x2 + y2);
+//		return res;
+		
+		return Math.hypot(x, y);
+		
+	}
+	
+}

@@ -1,0 +1,35 @@
+package com.test03;
+
+public class MTest {
+	
+	
+	public static void main(String[] args) {
+		String name = "배유진";
+		int kor = 100;
+		int eng = 50;
+		int math = 74;
+		
+		//1. Score 클래스에 int형 정수 3개를 받아서 ,
+		//세 값의 평균을 double로 리턴하는 getAvg라는 메소드를 만들자.
+		//접근 제한자는 public, 메모리 영역은 non-static
+		
+		//2. Score 클래스에 double 형 정수 1(평균)을 받아서, 
+		//90점부터 100점까지는 A
+		//80점부터 89점까지는 B
+		//70 79 C
+		//60 69 D
+		//0 59까지는 F
+		//를 리턴하는 메소드를 만들자
+		//메모리 이름은 getGrade, 접근제한자는 같은 패키지 내에서, 
+		//메모리 영역은 non-static
+		
+		//3. MTest 클래스의 main 메소드에서
+		//자기 이름+님의 등급은+(A~F = getGrade에서 리턴한 값)+ 입니다. 
+		
+		Score myScore = new Score();
+		System.out.println(name + "님의 등급은 " + myScore.getGrade(myScore.getAvg(kor, eng, math))+ "입니다");
+		
+	}
+	
+	
+}

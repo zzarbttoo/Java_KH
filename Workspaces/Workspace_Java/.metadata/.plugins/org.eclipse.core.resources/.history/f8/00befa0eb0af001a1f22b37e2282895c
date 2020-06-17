@@ -1,0 +1,49 @@
+package com.test02;
+
+import java.util.Random;
+
+public class MTest02 {
+
+	
+	/*
+	 * 5*5 상태로 (1~9 사이의 랜덤한 수 하나씩 출력) 만들어 출력
+	 * 0 0 0 0 0(0)(4)
+	 * 0 0 0 0 0(1)(3)
+	 * 0 0 0 0 0(2)(2)
+	 * 0 0 0 0 0(3)(1)
+	 * 0 0 0 0 0(4)(0)
+	 * 
+	 * 
+	 * x의 평균과 5*5 형태 cube의 총 합을 구해보자 
+	 * 
+	 */
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		int num = 0;
+		int randNum=0;
+		int min = 1;
+		int max = 9;
+		
+		Random rand = new Random();
+		
+		for(int i= 0; i<5; i++) {
+			for(int j = 0; j <5; j++) {
+				
+				
+				randNum = rand.nextInt(max - min + 1) + 1;
+				System.out.print(randNum + " ");
+				sum+=randNum;
+				
+				if( i == j || i+j == 4) {
+					num+=randNum;
+				}
+			}
+			System.out.println();
+		}
+		
+		System.out.println(num);
+		System.out.println(sum);
+		
+	}
+}

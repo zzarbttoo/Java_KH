@@ -1,0 +1,19 @@
+package com.test02;
+
+public class MTest01 {
+
+	//java.lang.Math
+	//class 이름은 직관적으로 알아볼 수 있도록 써주는 것이 좋다
+	public static void mathClass() {
+		
+		// 0.0 <= x < 1.0
+		double dRan = Math.random();
+		System.out.println(dRan);
+		
+	}
+	
+	public static void main(String[] args) {
+		//Random
+		
+	}
+}

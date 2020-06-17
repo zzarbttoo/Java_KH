@@ -1,0 +1,47 @@
+package com.test02;
+
+import java.util.Random;
+
+public class MTest01 {
+
+	//java.lang.Math
+	//class 이름은 직관적으로 알아볼 수 있도록 써주는 것이 좋다
+	//ctrl 하고 손가락 갖다대면 됨
+	public static void mathClass() {
+		
+		// 0.0 <= x < 1.0
+		double dRan = Math.random();
+		System.out.println(dRan);
+		
+		//1부터 10 사이의 랜덤한 숫자 
+		int max = 10;
+		int min = 1;
+		int intRan = (int)(Math.random() * (max - min + 1)) + min;
+		System.out.println(intRan);
+		
+	
+		
+		
+	}
+	
+	//java.util.Random()
+	public static void randomClass() {
+		
+		// 1 ~ 10 사이의 랜덤
+		int max = 10;
+		int min = 1;
+		
+		Random rand = new Random();
+		int result = rand.nextInt(max - min + 1) + 1;
+		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		//Random
+		mathClass();
+		randomClass();
+	}
+	
+}

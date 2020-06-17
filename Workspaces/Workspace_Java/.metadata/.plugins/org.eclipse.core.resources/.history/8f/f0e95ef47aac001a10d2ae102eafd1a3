@@ -1,0 +1,46 @@
+package com.test03;
+
+public class Score {
+
+	public double getAvg(int i, int j, int k) {
+		
+		//명시적 형변환을 해주어야한다
+		return (double) i + j + k / 3 ;
+		
+	}
+	
+	String getGrade(double avg) {
+		
+		
+		//if문
+//		String score = null;
+//		
+//		if (avg >= 90) score = "A";
+//		else if (avg >= 80) score = "B";
+//		else if (avg >= 70) score = "C";
+//		else if (avg >= 60) score = "D";
+//		else score = "F";
+//		
+//		return score;
+		
+		//switch문
+		//정수로 바꾸고 10으로 나눔 (하나하나 입력하기 귀찮음)
+		switch((int)avg / 10) {
+		case 10: 
+		case 9:
+			return "A";
+		case 8:
+			return "B";
+		case 7:
+			return "C";
+		case 6:
+			return "D";
+		
+		default : 
+			return "F";
+		}
+		
+	}
+	
+	
+}

@@ -1,0 +1,50 @@
+package com.test02;
+
+public class SumX {
+
+	/*
+	 * 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+	 * 
+	 */
+
+	public static void main(String[] args) {
+
+//		int sum = 0;
+//
+//		for (int i = 1; i < 26; i++) {
+//
+//			System.out.printf("%2d ", i);
+//			if (i % 5 == 0) {
+//				System.out.println();
+//			}
+//			if(i==13) {
+//				sum+=i;
+//			}else if(i==5) {
+//				sum+=i;
+//			}else if (i % 5 == (i / 5) + 1) {
+//				sum += i;
+//			}else if (i % 5 == 5 - (i/ 5)) {
+//				sum += i;
+//			}
+//
+//		}
+//		System.out.println(sum );
+		
+		
+		int sum=0;
+		
+		for(int i=1; i<5; i++) {
+			for (int j=1; j<6;j++ ) {
+				
+				System.out.printf("%2d ", i * 5 + j);
+				
+				if(i+1==j) {
+					sum+=(i*5 + j);
+				}
+			}
+			System.out.println();
+		}
+		System.out.println(sum);
+		
+	}
+}

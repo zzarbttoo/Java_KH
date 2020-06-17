@@ -1,0 +1,22 @@
+package com.point;
+
+import java.util.Scanner;
+
+public class PointLength {
+
+	
+	/*
+	 * 원점(0, 0) 부터 (x, y) 까지의 거리를 구하는 메소드를 만들자
+	 * 
+	 */
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("x 좌표 : ");
+		int x= sc.nextInt();
+		System.out.println("y 좌표: ");
+		int y = sc.nextInt();
+		
+	}
+	
+}

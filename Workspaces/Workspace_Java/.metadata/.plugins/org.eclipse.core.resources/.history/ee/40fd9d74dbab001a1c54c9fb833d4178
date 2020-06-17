@@ -1,0 +1,23 @@
+package com.test03;
+
+public class Score {
+
+	public double getAvg(int i, int j, int k) {
+		
+		return (double) i + j + k / 3 ;
+		
+	}
+	
+	String getGrade(double avg) {
+		
+		String score = null;
+		
+		
+		
+		
+		return score;
+		
+	}
+	
+	
+}

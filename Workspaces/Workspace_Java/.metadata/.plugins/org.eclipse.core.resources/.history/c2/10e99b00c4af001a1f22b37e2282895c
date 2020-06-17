@@ -1,0 +1,86 @@
+package com.test03;
+
+public class Yoon {
+
+	public static void main(String[] args) {
+
+		Yoon nyon = new Yoon();
+		nyon.yoonmeth(2017, 6, 18);
+
+	}
+
+	public void yoonmeth(int i, int j, int k) {
+
+		boolean yoon = false;
+		int today = 0;
+		int sD = 0;
+		int sD_bM = 0;
+		int monthD[] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+		// 윤년 여부인지 출력
+		if (i % 4 == 0) {
+
+			if (i % 100 == 0 && i % 400 == 0) {
+				System.out.println(i + "년은 윤년입니다");
+				yoon = true;
+			}
+			if (i % 400 != 0) {
+				System.out.println(i + "년은 평년입니다");
+			}
+		} else {
+			System.out.println(i + "년은 평년입니다");
+		}
+
+		today += (i - 1900) * 365;
+		today += (i - 1900) / 4;
+
+		if (yoon && (j == 2 || j == 1)) {
+			today--;
+		}
+
+		for (int t = 1; t < j; t++) {
+
+			
+			System.out.println(monthD[t-1]);
+				sD_bM += monthD[t-1];
+
+		}
+		today += sD_bM;
+		today += k;
+		today -= 1;
+
+		sD = today % 7;
+
+		switch (sD) {
+		case 0:
+			System.out.println("Sunday");
+			break;
+		case 1:
+			System.out.println("Monday");
+			break;
+		case 2:
+			System.out.println("Tuesday");
+			break;
+		case 3:
+			System.out.println("Wednesday");
+			break;
+		case 4:
+			System.out.println("Thursday");
+			break;
+		case 5:
+			System.out.println("Friday");
+			break;
+		case 6:
+			System.out.println("Saturday");
+			break;
+
+		}
+
+		// 달력 출력
+
+		System.out.println("========" + i + "년" + j + "월" + "=======");
+		System.out.printf("%2s %2s %2s %2s %2s %2s %2s", "월", "화", "수", "목", "금", "토", "일");
+
+	}
+
+}

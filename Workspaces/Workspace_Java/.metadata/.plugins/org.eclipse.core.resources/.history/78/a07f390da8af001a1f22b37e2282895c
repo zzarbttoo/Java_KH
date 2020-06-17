@@ -1,0 +1,15 @@
+package com.test02;
+
+public class MTest01 {
+
+	//java.lang.Math
+	public static void mathClass() {
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		//Random
+		
+	}
+}

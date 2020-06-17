@@ -1,0 +1,36 @@
+package com.test02;
+
+public class FruitBasket {
+
+	//class 안에 바로 선언돼있다
+	//전역 변수 : 선언 하면서 초기화는 가능하지만, 클래스 안에서 명령을 하면 안된다 
+	static int basketSize=30;
+	int fruitCount=10;
+	String fruitName;
+
+	//초기화 블럭이라고 초기화를 시킬 수는 있지만 잘 안쓴다
+	{ 
+		
+		basketSize=30;
+		
+	}
+	
+	
+	public void basketSetting(String name, int fruit) {
+		
+		fruitName = name;
+		fruitCount += fruit;
+		basketPrn();
+		
+	}
+	
+	private void basketPrn(){
+		
+		System.out.println("바구니 안의 과일 : " + fruitName);
+		System.out.println( basketSize > fruitCount ? fruitName+"의 갯수는 "+ fruitCount+"입니다": "바구니가 넘쳤습니다!");
+		
+	}
+	
+	
+	
+}

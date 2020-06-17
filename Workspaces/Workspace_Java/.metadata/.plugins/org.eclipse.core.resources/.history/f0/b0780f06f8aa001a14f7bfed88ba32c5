@@ -1,0 +1,33 @@
+package com.test01;
+
+//카멜 표기법
+//class: 첫글자 대문자, 새로운 단어가 나올 때 대문자
+//method: 첫글자 소문자, 새로운 단어가 나올 때 대문자
+public class MTest {
+
+	//필드
+	//(static) final : 상수화
+	public static final int TEN = 10;
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		MTest.opr01(3);
+	}
+	
+	//1. 사칙연산
+	public static void opr01(int a) {
+		
+		System.out.printf("%d + %d = %d\n", TEN, a , TEN + a);
+		System.out.printf("%d - %d = %d\n", TEN, a, TEN - a);
+		System.out.printf("%d * %d = %d\n", TEN, a, TEN * a);
+		System.out.printf("%d / %d = %d\n", TEN, a, TEN / a);
+		System.out.printf("%d %% %d = %d\n", TEN, a, TEN % a);
+				
+		
+		
+	}
+	
+}

@@ -1,0 +1,20 @@
+package com.test01;
+
+public class MTest01 {
+
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	
+	public static void prn01() {
+		int i = 1;
+		 
+		while( i < 10) {
+			System.out.println(i);
+			i++;
+		}
+		System.out.println("i : " + i);
+	}
+}

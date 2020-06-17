@@ -1,0 +1,20 @@
+package com.cal;
+
+//년 월 일이 주어지면 , 해당 년 원 일의 요일을 출력하자
+//단 Calendar class 사용 금지
+public class DayOfCalendar {
+	
+	
+public static void main(String[] args) {
+	
+	
+	
+}
+	
+
+public static void yoon(int i, int j, int k) {
+	
+	
+	
+}
+}

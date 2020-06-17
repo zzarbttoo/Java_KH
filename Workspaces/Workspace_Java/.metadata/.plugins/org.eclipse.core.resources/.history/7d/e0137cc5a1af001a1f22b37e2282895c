@@ -1,0 +1,29 @@
+package com.test01;
+
+import java.util.Scanner;
+
+public class MTest01 {
+
+	public static void main(String[] args) {
+		
+		test01();
+	}
+
+	private static void test01() {
+		//ctrl space bar 쓰면 자동 임포트
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("숫자를 입력해 주세요 : ");
+		int a = sc.nextInt();
+		
+		System.out.println("숫자를 다시 입력해 주세요 : ");
+		int b = sc.nextInt();
+		
+		int sum = a + b;
+		System.out.println("입력하신 두 숫자의 합은 " + sum + " 입니다!");
+		
+	}
+	
+	
+}

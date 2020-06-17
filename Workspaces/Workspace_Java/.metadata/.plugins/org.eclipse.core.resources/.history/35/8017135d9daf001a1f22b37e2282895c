@@ -1,0 +1,12 @@
+package com.test01;
+
+public class ArgTest {
+
+	//run as -> run configurations -> arguments -> ${stirng_prompt}
+	public static void main(String[] args) {
+	
+		
+		
+		
+	}
+}

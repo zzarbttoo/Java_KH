@@ -1,0 +1,26 @@
+package com.test01;
+
+public class MTest02 {
+
+	
+	public static void main(String[] args) {
+		//1. 1~100 까지의 숫자를 역순으로 출력
+		test01();
+		//2. 1~100 까지의 숫자 중 4의 배수만 출력 
+		test02();
+		//3. 1~100 까지의 숫자 중 7의 배수의 갯수(14) 와 
+		// 7의 배수의 총 합(735) 을 출력하자
+		test03();
+		
+		
+	}
+	
+	public static void test01() {
+		
+	}
+	
+	
+	public static void test02() {}
+	
+	public static void test03() {}
+}
