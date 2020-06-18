@@ -28,14 +28,13 @@ public class MTest03 {
 	public static void main(String[] args) {
 
 		int[][] tempo1 = new int[3][3];
-
 		int[][] tempo2 = new int[4][5];
 		
 
 		int t = 0;
 		int t2= 0;
 		
-		for (int i = 0; i < tempo1.length; i++) {
+		for (int i = 0; i < tempo1.length; i++){
 			for (int j = 0; j < tempo1[i].length; j++) {
 
 				t++;
