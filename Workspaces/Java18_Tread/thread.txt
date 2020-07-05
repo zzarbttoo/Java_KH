@@ -1,0 +1,11 @@
+Program : 실행할 수 있는 파일(.exe) 
+Process : 프로그램이 실행되고 있는 상태 
+Tread : Process 안에서 메서드 단위로 실행되는 모듈(실행되는 작업 단위)
+
+자바에서 Thread 작성하는 방법
+1. implements Runnable(단순히 쓰레드화 시킬 때만 사용)
+2. extends Thread 
+
+
+* run( ) -> Thread.start( ) 가 자동 호출
+

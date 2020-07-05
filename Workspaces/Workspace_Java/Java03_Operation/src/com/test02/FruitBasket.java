@@ -7,6 +7,9 @@ public class FruitBasket {
 	static int basketSize=30; //static 붙으면 class 변수 //모든 타입에 적용이 된다
 	int fruitCount=10; // static 안붙으면 instance 변수 
 	String fruitName;
+	
+	//static에서는 nonstatic에 있는 거 가져올 수 x
+	//nostatic엣는 호출은 할 수 있는데, 되도록 사용하지 말자
 
 	//초기화 블럭이라고 초기화를 시킬 수는 있지만 잘 안쓴다
 	{ 

@@ -1,0 +1,15 @@
+
+
+1. URL(Uniform Resource Locator) : (우리가 원하는 자원의) 주소(위치)
+
+
+2. URN(Uniform Resource Name) : 대상의 이름
+
+
+3. URI(Uniform Resource Identifier) : 식별자
+
+
+//Rest가 부각되기 시작했다(카카오 - restful API를 사용해 쇼핑몰 홈페이지를 만들어오라는 과제를 냈다는게 이게 말이야방구야)
+
+
+
