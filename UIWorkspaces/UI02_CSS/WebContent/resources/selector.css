@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+
+/* 타입 선택자*/
+
+h1{
+	
+	text-align : right;
+	color : red;
+	
+}
+
+pre{
+	
+	text-align : center;
+	
+}
+
+/* id 선택자 */
+
+#sid01{
+	
+	color : gold;
+	
+}
+#sid02{
+	
+	color : silver;
+	
+}
+#sid03{
+	
+	background-color : black;
+	color : white;
+	
+}
