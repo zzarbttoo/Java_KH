@@ -34,3 +34,114 @@ pre{
 	color : white;
 	
 }
+
+/* class 선택자*/ 
+.scls{
+	
+	color : yellogreen;
+	
+}
+
+/* 전체 선택자 */
+*{
+	
+	/*text-align : right;*/
+	
+	
+}
+
+/* 자식 선택자 */
+#atc > p{
+	
+	color : aqua;
+	
+	
+}
+#atc > div > p{
+	
+	background-color : skyblue;
+	
+}
+
+/* 하위 선택자 */
+div span{
+	
+	background-color : navajowhite;
+	
+	
+}
+
+/* 인접 선택자 */
+h3 + b{
+	
+	color : violet;
+	
+}
+
+span+b{
+	
+	background-color : indigo;
+	color : white;
+}
+
+/* 속성 선택자 */
+p[title]{
+	color : lavenderblush;
+	background-color : maroon;
+}
+
+p[title = "b"]{
+	
+	background-color : black;
+	
+	
+}
+
+/* 가상 클래스 선택자 */
+a:link{
+	
+	color : lemonchiffon;
+	
+	
+}
+a:visited{
+	
+	color : gray;
+	
+}
+a:hover{
+	
+	
+	background-color : powderblue;
+	color : aliceeblue;
+	fond-size : 25pt;
+	
+}
+a:active{
+	
+	color : olive;
+	
+}
+input:checked{
+	
+	width:100px;
+	height:100px;
+	
+	
+}
+
+/* 종속 선택자 */
+
+li.scls01{
+	background-color : ghostwhite;
+}
+li.scls02#sidli{
+	color : salmon;
+}
+
+
+
+/* 그룹 선택자 */
+p, pre, strong{
+	color : tomato;
+}
