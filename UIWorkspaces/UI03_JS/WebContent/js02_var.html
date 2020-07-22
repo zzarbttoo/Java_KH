@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type ="text/javascript">
+
+	var variable = 10;
+	
+	function test01(){
+		
+		variable = variable + 5;
+		document.getElementById("v01").innerHTML = "<b style='color:red; background:yellow'>" + variable + "</b>";
+		
+		
+	}
+	
+	function test02(){
+		
+		var variable2 = variable + 100; alert(variable2);
+		document.getElementById("v02").innerHTML = "<b style='color:red; background:yellow'>" + variable2 + "</b>";
+		
+	}
+	
+	function test03(){
+		//문자
+		var variable03 = "문자";
+		alert(variable03 + ":" + typeof variable03);
+		
+		
+		//숫자
+		variable03 = 3;
+		alert(variable03 + ":" + typeof variable03);
+		
+		//논리
+		variable03 = true;
+		alert(variable03 + ":" + typeof variable03);
+		
+		//null
+		variable03 = null;
+		alert(variable03 + ":" + typeof variable03);
+		
+		//객체
+		variable03 = [1, 3, 5, 7, 9];
+		alert(variable03 + ":" + typeof variable03);
+		
+		//함수
+		variable03 = function(){
+			
+			alert('type 변환');
+			
+		}
+		alert(variable03 + ":" + typeof variable03);
+		
+		variable03();
+		
+		
+		
+		
+	}
+	
+	
+
+</script>
+
+
+
+</head>
+<body>
+
+	<h1>변수의 사용</h1>
+	
+	<dl>
+		<dt>변수 선언 규칙</dt>
+		<dd>1. 대소문자 구분</dd>
+		<dd>2. 영문, $, _로 시작</dd>
+		<dd>3. 영문, $, _, 숫자를 포함 가능</dd>
+		<dd>4. 키워드나 예약어를 사용 불가</dd>
+		
+		<dt>변수의 범위</dt>
+		<dd>1. 전역변수 : window 객체에 포함되는 변수로 다른 함수들에서 공용으로 사용될 수 있다(값이 유지됨)
+			<button onclick = "test01();">확인</button>
+		</dd>
+		<dd id="v01"></dd>
+		<dd>2.지역변수 : 함수나 객체 내부에 선언되고 실행이 종료되면 사라짐
+			<button onclick ="test02();">확인</button>
+		</dd>
+		<dd id="v02"></dd>
+		
+		<dt>변수의 선언과 저장</dt>
+		<dd>1. var 키워드를 사용하여 변수를 선언한다</dd>
+		<dd>2. 변수의 타입은 저장되는 타입에 따라 결정된다
+			<button onclick = "test03();">확인 </button>
+		</dd>
+		
+		<dt>타입의 종류</dt>
+		<dd>1. 문자(string)</dd>
+		<dd>2. 숫자(number)</dd>
+		<dd>3. 논리(boolean)</dd>
+		<dd>4. 널(null)</dd>
+		<dd>5. 객체</dd>
+		<dd>6. 함수</dd>
+		<dd></dd>
+	</dl>
+
+
+</body>
+</html>

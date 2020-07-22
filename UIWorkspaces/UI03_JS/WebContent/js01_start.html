@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<script type = "text/javascript" src= "resources/js/start.js"></script>
+
+<script type ="text/javascript">
+
+	function embeddedTest(){
+			
+		var doc = document.getElementsByTagName("li")[1];
+		doc.style.color = "red";
+		doc.innerHTML = "<strong>글자가 바뀝니다.</strong>"
+		
+	}
+	
+	
+
+</script>
+<body>
+
+	<h1>자바스크립트 작성방식 3가지</h1>
+	
+	<ol>
+		<li onclick ="alert('inline');">inline 방식</li>
+		<li onclick = "embeddedTest();">내부 작성 방식</li>
+		<li onclick = "test();">외부 링크 연결(*.js)</li>
+	</ol>
+
+
+</body>
+</html>
