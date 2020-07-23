@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<script type = "text/javascript">
+
+	function numberObj(){
+		
+		var out = document.getElementById("inputText");
+		
+		//1. 작성 방법
+		var num01 = new Number(7); //객체 선언
+		var num02 = 7 //리터럴 
+		
+		//2. NaN
+		//parseInt 에다가 문자열을 넣으면 숫자가 아니기 때문에 NaN이 뜨게 된다
+		//parseInt 에다가 숫자를 넣으면 그 숫자가 뜨게 된다 
+		
+		out.innerHTML = "NaN :" + parseInt("123") + "<br/>";
+		
+		//3. infinity 
+		out.innerHTML += "infinity : " + (Infinity / 100) + "<br/>";
+		out.innerHTML += "infinity : " + (Number.MAX_VALUE + 0.00001e+308) + "<br/>";
+		
+		//4. Number 객체의 함수
+		//1)toFixed() : 실수형의 소수점 자리수를 지정하고 문자열로 반환
+		var number01 = 333.34567;
+		out.innerHTML += "toFixed : " + number01.toFixed(2) + "<br/>"; 
+		
+		//2) toString(n) : n진수 변환하여 문자열로 반환
+		var number02 = 123;
+		out.innerHTML += "toString(n) : " + number02.toString(16);
+		
+	}
+	
+	function isNum(){
+		
+		var out = document.getElementById("inputText");
+		
+		var num = prompt("숫자만 입력하세요");
+		
+		
+		//isNaN(n) : 숫자이면 false / 숫자가 아니면 true
+		if(isNaN(num)){
+			
+			out.innerHTML = "숫자가 아닙니다";
+		}else{
+			
+			out.innerHTML = "숫자입니다";
+		}
+		
+	}
+	
+
+</script>
+
+<body>
+
+
+<pre>
+	*자바 스크립트에서 기본적으로 제공하는 객체 중 하나
+	1. Number 
+		-정수 실수를 다루는 객체 
+		
+		<button onclick = "numberObj();">number 객체</button>
+		- 속성 : NaN (Not a Number)
+			 : infinity (범위를 벗어난 숫자)
+			 
+		- 기타 예외 속성
+			undefined(값이 정의되지 않는다)
+			null(변수는 선언되어 있지만, 값이 비어있다)
+			<button onclick ="isNum();">숫자 판별</button>
+			
+</pre>
+
+	<p id="inputText"></p>
+
+
+</body>
+</html>

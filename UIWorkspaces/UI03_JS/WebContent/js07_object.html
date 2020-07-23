@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<script type="text/javascript">
+	//객체 작성 1
+	function qClass() {
+
+		// 외부에서 접근 가능
+		this.name = "kh정보교육원";
+		// 외부에서 접근 불가
+		var classname = "빅데이터 전문가 과정";
+		
+		//클로저를 이런식으로 쓸 수 있다
+		this.getClassname = function() {
+			return classname;
+		}
+	}
+	
+	//객체 리터럴(리터럴 객체) - 자바 스크립트의 순수 객체 ( key : value) 형태이다
+	var qClass2 = {
+			
+		name : "kh정보교육원",
+	
+		print : function(){
+			
+			alert(qClass2.name + "빅데이터 전문 개발자 과정 - 오후반");
+			
+		}
+		
+			
+	}
+	
+	//prototype 
+	//객체에 기능을 추가시켜줬다 (원래 객체에는 그런 기능이 없었다!!!)
+	qClass.prototype.printName = function(){
+		
+		alert(this.name + this.getClassname() + "최고!!!");
+		
+	}
+	
+
+	function objTest() {
+
+		var cls = new qClass();
+		//alert(cls.name);
+		//alert(cls.classname);
+		//alert(cls.getClassname());
+		
+		
+		cls.printName();
+		
+		//바로 가져다 쓰고 싶으면 이렇게 쓰면 된다
+		//변수에는 객체가 들어가있다 
+		
+		alert(qClass2.name);
+		qClass2.print();
+
+	}
+</script>
+
+<body>
+
+	<pre>
+		객체의 구성 
+		-메서드 : 기능 정의
+		-속성 : 객체 내부 데이터
+		-this : 객체 내부의 메서드나 속성을 정의할 때 사용
+		-프로토타입 : 객체의 확장
+	</pre>
+
+	<button onclick="objTest();">객체</button>
+
+
+
+
+</body>
+</html>

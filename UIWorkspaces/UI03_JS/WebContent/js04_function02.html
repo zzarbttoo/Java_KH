@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type = "text/javascript">
+
+
+	function func01(){
+		alert("명시적 함수!!");
+		
+	}
+	
+	 var func02 = function(){
+		
+		alert("익명 함수!!");
+		
+	}
+	 
+	 function literalPrn(literal){
+		 
+		 literal("안녕하세요, 리터럴 입니다.", "아니요");
+		 
+		 
+	 }
+	 
+	 function func03(){
+		 
+		 literalPrn(function(msg, msg2){alert(msg + msg2 + "!!!!");});
+		 
+
+		 
+	 }
+	 
+	 //closure : 외부 함수 안에 있는 내부함수가 외부 함수의 변수등에 접근 가능
+	 function closureTest(val){
+		 
+		 var msg = "재미있겠다!!"
+		 function addVal(){
+			 alert(val + msg);
+		 }
+		 
+		 return addVal;
+		 
+	 }
+	 
+	 function amEdu(val){
+		 
+		 closureTest(val)();
+		 // closureTest("세미 프로젝트") ->
+		 // function addVal(){alert("세미프로젝트" + "재밌겠다")}->
+		 // function addVal(){alert("세미프로젝트" + "재밌겠다")}();
+		 // "세미 프로젝트 재밌겠다 " 출력 !!
+		 
+	 }
+	 
+	 var pmEdu = closureTest("javascript");
+	
+	
+	
+
+</script>
+
+<body>
+
+	<h1>함수!!</h1>
+	
+	<h2>함수의 종류</h2>
+	
+	<p onclick = "func01();">1. 명시적 함수</p>
+	<p onclick = "func02();">2. 익명 함수</p>
+	<p onclick = "func03();">3. 함수 리터럴</p>
+
+	<h2>클로저</h2>
+
+	<label for= "am">오전 강의</label>
+	<input type = "text" id = "am"/>
+	<input type = "button" value = "클릭" onclick = "amEdu(am.value);"/>
+	
+	<label for = "pm">오후강의</label>
+	<input type = "text" id = "pm"/>
+	<input type = "button" value = "클릭" onclick = "pmEdu(pm.value);"/>
+	
+	
+	
+</body>
+</html>
