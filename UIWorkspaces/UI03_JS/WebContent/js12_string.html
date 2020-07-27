@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<p>
+		문자열 합치기
+		<button onclick="strTest01();">확인</button>
+	</p>
+	<p>
+		다른 자료형 합치기
+		<button onclick="strTest02();">확인</button>
+	</p>
+	<p>
+		문자열 비교하기
+		<button onclick="strTest03();">확인</button>
+	</p>
+	<span id="res"></span>
+	<br />
+	<p>
+		문자열 검색하기
+		<button onclick="strTest04();">확인</button>
+	</p>
+	<p>
+		문자열 추출하기
+		<button onclick="strTest05();">확인</button>
+	</p>
+	<p>
+		키워드 나누가
+		<button onclick="strTest06();">확인</button>
+	</p>
+	<div id="key"></div>
+
+	<script type="text/javascript">
+		function strTest01() {
+
+			var str01 = "String";
+			var str02 = "Test";
+
+			// +
+			var str03 = str01 + str02;
+			alert("String + Test" + str03);
+
+			// concat()
+			var str04 = str01.concat(str02 + " ", "재미있다");
+			alert(str04);
+
+		}
+
+		function strTest02() {
+
+			var num01 = 5;
+			var num02 = 7.2;
+
+			var bool = true;
+
+			//string concatnation
+			var result = "String" + num01 + num02 + bool;
+			alert(result + ":" + typeof (result));
+
+		}
+
+		function strTest03() {
+
+			var str = prompt("이름을 입력하세요:");
+			var span = document.getElementById("res");
+
+			//동등 연산자 ==
+			if (str == "kh") {
+				span.textContent = str + "님, 환영합니다.";
+
+			} else if (str == "qclass") {
+
+				span.textContent = str + "님, 진짜루 환영합니다.";
+
+			} else {
+
+				span.textContent = "이름을 다시한번 확인해 주세요";
+			}
+
+			//동등 연산자를 사용하면, 비교하는 자료형이 자동으로 형변환 된다.
+			var num01 = 10;
+			if (num01 == "10") {
+
+				span.textContent = "== : 숫자 10이  맞습니다.";
+			} else {
+
+				span.textContent = "== : 숫자 10이 아닙니다";
+
+			}
+
+			// ===연산자 : 엄격한 비교
+			if (num01 === "10") {
+
+				alert("=== : 숫자 10이 맞습니다.");
+
+			} else {
+
+				alert("=== : 숫자 10이 아닙니다.");
+
+			}
+
+			var strObj = new String("kh");
+			var strVal = "kh";
+
+			if (strObj == strVal) {
+
+				alert("== : 문자가 같다.");
+
+			} else {
+
+				alert("== : 문자가 다르다");
+
+			}
+
+			if (strObj === strVal) {
+				alert("=== : 문자가 같다.");
+
+			} else {
+				alert("=== : 문자가 다르다.");
+
+			}
+
+		}
+
+		function strTest04() {
+
+			//indexOf() : 왼쪽 -> 오른쪽 (첫번째 인덱스 반환)
+			//lastIndexOf() : 오른쪽 -> 왼쪽 (첫번째 인덱스 반환)
+
+			var str = "홍길동 이순신 김선달 유재석 강호동 홍길동";
+			var prop = prompt("검색할 이름을 입력해 주세요");
+
+			alert("indexOf() : " + str.indexOf(prop));
+			alert("lastIndexOf() : " + str.lastIndexOf(prop));
+			//없으면 : -1 
+
+		}
+
+		function strTest05() {
+
+			//substring() : 시작 인덱스 ~ 끝 인덱스
+			// split() : 기준이 되는 요소로 나누어 배열로 반환
+
+			var strVal = "문자열 추출하기 . 관련 메소드 :indexOf, substring.";
+
+			// : 하면 ~ . 까지 잘린다
+			// +1 해서 . 제외함
+			var startIndex = strVal.indexOf(":") + 1;
+			//.부터 앞으로 자르러 간다
+			var endIndex = strVal.lastIndexOf(".");
+
+			var result = strVal.substring(startIndex, endIndex);
+			alert(result);
+
+			var splitVal = result.split(",");
+			alert(splitVal[1]);
+			alert(splitVal[0]);
+
+		}
+
+		function strTest06() {
+
+			var prop = prompt("쉼표로 구분하여 키워드를 입력하세요", "예)사과, 바나나, 키위, 수박");
+			var key = document.getElementById("key");
+
+			var propArr = prop.split(",");
+			var propRes = "";
+
+			for (var i = 0; i < propArr.length; i++) {
+				propRes += propArr[i] + "<br/>";
+
+			}
+
+			key.innerHTML = propRes;
+
+		}
+		
+	</script>
+
+</body>
+</html>
