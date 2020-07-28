@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>중복체크</title>
+
+<script type="text/javascript">
+	var ids=["khacademy","java","script"];
+	
+	function confirmChk(){
+		var id=document.getElementsByName("id")[0].value;
+		var div=document.getElementsByTagName("div")[0];
+		if(ids.indexOf(id)!=-1){
+			div.innerHTML="<b>아이디가 존재합니다.</b>";
+		}else{
+			var userId="사용할 수 있는 아이디입니다."
+			          +"<input type='button' value='확인'"
+			          +"onclick='insertId(\""+id+"\")'>";
+			div.innerHTML=userId;          
+		}
+	}
+	
+	function insertId(id){
+		//reference documents에 id 값을 넣었다
+		opener.document.getElementsByName("id")[0].value=id;
+		 //we can bring it back on top of any other
+	     //window with the focus() method. There would be no need to re-create
+	     //the window or to reload the referenced resource. 
+	     //reference document에 password 값을 넣었다
+	     //그리고 focus를 이용해 아직 닫히지 않은 reference 창을 위로 올라오게 했다
+		opener.document.getElementsByName("pwd")[0].focus();
+		 //window3을 닫았다
+		close();
+	}
+</script>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id"/></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="중복확인" onclick="confirmChk()"/>
+				<input type="button" value="취소" onclick="self.close()"/>
+			</td>
+		</tr>
+	</table>
+	<div></div>
+
+</body>
+</html>

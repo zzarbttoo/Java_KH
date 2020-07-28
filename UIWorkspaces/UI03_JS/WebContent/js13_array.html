@@ -4,87 +4,178 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script type = "text/javascript">
-
+<script type="text/javascript">
 	var arrayObj = new Array();
-	var arrayObj01 = ["v1", "v2", 3, 4];
-	
+	var arrayObj01 = [ "v1", "v2", 3, 4 ];
+
 	//배열은 object type 이다
 	//alert(typeof(arrayObj01));
-	
+
 	var arrayObj02 = new Array(5);
 	//o,o,o,o,o 5칸이다
 	//초기 값이 정의되지 않음(undefined)
 	//alert(arrayObj02);
-	
+
 	var arrayObj03 = new Array(1, 2, 3, 4, "5");
 	//alert(arrayObj03)
-	
-	function multiArr(){
-		
+
+	function multiArr() {
+
 		var arrLen = 3;
 		var arr = new Array(arrLen);
-		for(var i = 0; i < arr.length; i++){
-			
+		for (var i = 0; i < arr.length; i++) {
+
 			arr[i] = new Array(arrLen);
-			
+
 		}
-		
+
 		arr[0][0] = "수박";
 		arr[0][1] = "바나나";
 		arr[0][2] = "키위";
-		
+
 		arr[0][1] = 1;
 		arr[1][1] = 2;
 		arr[1][2] = 3;
-		
-		arr[2][0] = ["test", "javascript"];
-		arr[2][1] = ["java", "spring"];
-		arr[2][2] = ["jsp" , "servlet"];
-		
+
+		arr[2][0] = [ "test", "javascript" ];
+		arr[2][1] = [ "java", "spring" ];
+		arr[2][2] = [ "jsp", "servlet" ];
+
 		//1. 배열 전체 출력
-		
+
 		alert("전체출력 : " + arr);
-		
+
 		//2. 배열 안에 있는 숫자 3 출력
-		
+
 		alert("배열 안에 3 : " + arr[1][2]);
-		
+
 		//3. 배열 안에 있는 "java"출력
-		alert("배열 안에 java" +  arr[2][1][0]);
-		
-		
-		
-		
+		alert("배열 안에 java" + arr[2][1][0]);
+
 	}
-	
-	
-	function joinTest(){
-		var numArr = [1, 2, 3, 4, 5];
+
+	function joinTest() {
+		var numArr = [ 1, 2, 3, 4, 5 ];
 		//배열의 요소 사이사이에 join을 통해 + 를 넣어주어, 하나의 문자열로 만들어 줄 것이다
 		var result = numArr.join("+");
 		console.log(result);
 		//이 문자열을 실행하여 값을 얻어낼 것이다
 		alert(eval(result));
+
+	}
+	
+	
+	function sortTest01(){
+		
+		var arr = ["d","b","a","c"];
+		alert(arr);
+		arr.sort();
+		alert(arr);
+		
+	}
+	
+	//sort() : 사전식 정렬. 오름차순 정렬
+	//sort(안에 함수를 넣어) 정렬할 수 있다
+	function sortTest02(){
+		
+		var arr = [6, 1, 4, 2, 7, 8, 3, 5, 9, 10, 11, 21 ,33];
+		arr.sort(compareNum);
+		alert(arr);
+		
+	}
+	
+	function compareNum(a, b){
+		
+		return a-b;
 		
 	}
 	
 	
+	function reverseTest(){
+		
+		var arr = [33, 99, 41, 67, 31];
+		
+		//arr.sort(compartNum);
+		//arr.reverse();
+		//alert(arr);
+		
+		arr.sort(function(a,b){
+			
+			return b-a;
+			
+		});
+		alert(arr);
+		
+	}
+	
+	function pushAndShift(){
+		
+		var queue = new Array();
+		queue.push("first");
+		queue.push("second");
+		queue.push("third");
+		alert(queue);
+		
+		var tmp  = queue.pop();
+		alert(queue);
+		alert(tmp);
+		
+		queue.push("third");
+		//가장 앞에 있는 값을 들고온다
+		tmp = queue.shift();
+		alert(queue);
+		alert(tmp);
+		
+	}
+	
+	
+	function sliceTest(){
+		//시작 index 부터 끝의 전 인덱스만 잘라서 온다 
+		var arrayTest01 = new Array(1,2,3,4,5,6,7);
+		var array01 = arrayTest01.slice(1,3);
+		alert(array01);
+		
+		var arrayTest02 = new Array(4);
+		arrayTest02[0] = new Array(1, 2);
+		arrayTest02[1] = new Array(3, 4);
+		arrayTest02[2] = new Array(5, 6);
+		arrayTest02[3] = new Array(7, 8);
+		
+		var array02 = arrayTest02.slice(1,3);
+		alert(arrayTest02);
+		alert(array02);
+		
+	}
 	
 	
 </script>
 
 <body>
 
-
 	<h1>배열 객체</h1>
-	
-	
 	<ul>
-		<li onclick = "multiArr();">다중 배열</li>
-		<li onclick = "joinTest();">join 함수</li>
-	</ul>
+		<li onclick="multiArr();">다중 배열</li>
+		<li onclick="joinTest();">join 함수</li>
+		<li>배열 정렬
+			<ul>
+				<li onclick = "sortTest01();">sort() 문자 정렬</li>
+				<li onclick = "sortTest02();">sort() 숫자 정렬</li>
+				<li onclick = "reverseTest();">reverse() 반대로 정렬</li>
 
+			</ul>
+		</li>
+		<li onclick = "pushAndShift();">배열 저장 방식
+			<ul>
+				<li>push()</li>
+				<li>pop()</li>
+				<li>shift()</li>
+			</ul>
+		
+		</li>
+		
+		<li onclick = "sliceTest();">배열의 부분을 가지고 새 배열 생성 slice()</li>
+		
+	</ul>
 
 </body>
 </html>
