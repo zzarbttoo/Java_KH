@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<style type = "text/css">
+
+	p{border : 1px solid blue;}
+	
+	#test01, #test02{
+		
+		width : 300px;
+		height: 300px;
+		border : 1px dashed red;
+	
+	
+	}
+	
+
+</style>
+
+<script type = "text/javascript">
+
+	function addAppend(){
+		
+		var fieldset = document.getElementById("addele");
+		
+		var p = document.createElement("p");
+		
+		//1.
+		//var txt = document.createTextNode("자식 태그들 중 가장 마지막에 붙여넣는다");
+		//p.appendChild(txt);
+		
+		//2.
+		p.textContent = "자식 태그들 중 가장 마지막에 붙여넣는다.";
+		fieldset.appendChild(p);
+		
+	}
+	
+	var count = 0;
+	
+	function addBefore(){
+		
+		count++;
+		
+		var p = document.createElement("p");
+		p.textContent = "기준점의 앞에 붙여넣는다" + count;
+		var fieldset = document.getElementById("addele");
+		
+		//querySelector 은 css 선택자 가지고 찾는다
+		//querySelector 이므로 자식요소 하나만 찾아줘라 cf querySelectorAll
+		var div = document.querySelector("fieldset > div");
+		
+		//insertBefore(새로 추가할 요소, 기준점)
+		fieldset.insertBefore(p, div);
+		
+	}
+	
+	function moveElement(){
+		
+		var moveEle = document.querySelector("fieldset").children[1];
+		var addEle = document.body;
+		
+		addEle.appendChild(moveEle.children[1]);
+		
+		
+		/*
+		검사하지 않는 숙제!
+		-> childNodes와 children의 차이점
+		
+		
+		*/
+		
+		
+		
+	}
+	
+	function addTest(){
+		
+		var div = document.createElement("div");
+		div.textContent = "dom test";
+		document.getElementById("test01").appendChild(div);
+		
+	}
+	function moveTest(){
+		
+		var child = document.getElementById("test01").children[0];
+		var test02 = document.getElementById("test02");
+		test02.appendChild(child);
+		
+		
+		
+		
+	}
+	
+
+</script>
+
+
+
+<body>
+	
+	<h1>태그 추가하기</h1>
+	
+	<button onclick = "addAppend();">appendChild()</button>
+	<button onclick = "addBefore();">insertBefore</button>
+	<button onclick = "moveElement();">appendChild를 이용한 element 이동</button>
+
+	<fieldset id = "addele">
+		<legend>부모 태그</legend>
+		<div>div 태그</div>
+	</fieldset>
+	
+	<hr/>
+	<h3>1. test01 태그에 "dom test" 라는 내용을 가진 div 태그를 여러개 추가해보자.</h3>
+	<button onclick = "addTest();">클릭</button>
+	<h3>2. test01 태그에 추가된 태그들을 test02 태그로 이동시켜보자. </h3>
+	<button onclick = "moveTest();">클릭</button>
+	
+	<div id = "test01"></div>
+	<div id = "test02"></div>
+	
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<style type="text/css">
+img {
+	vertical-align: middle;
+	width: 300px;
+	height: 300px;
+}
+
+a {
+	font-size: 30px;
+	text-decoration: none;
+}
+</style>
+
+<script type="text/javascript">
+
+
+
+	window.onload = function(){
+		var anchs = document.querySelectorAll("a");
+		var img = document.querySelector("img");
+		var count = 1;
+			
+		anchs[0].onclick = function(){
+			
+			var alt = img.getAttribute("alt");
+			if(alt == "집1.PNG"){
+				
+				count = 5;
+				img.setAttribute("alt", "집5.PNG");
+				img.setAttribute("src" , "resources/image/집5.PNG");
+				
+			}else{
+				
+				count--;
+				img.setAttribute("alt", "집" + count +".PNG");
+				img.setAttribute("src", "resources/image/집"+ count + ".PNG");
+				
+			}
+		
+		
+			
+		}
+		
+		anchs[1].onclick = function(){
+			
+		
+		}
+		
+			
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+
+	<div>
+		<a href="#" id="lt">◀</a> <img alt="집1.PNG" src="resources/image/집1.PNG" />
+		<a href="#" id="gt">▶</a>
+
+	</div>
+
+</body>
+</html>
