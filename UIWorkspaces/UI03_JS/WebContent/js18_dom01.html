@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type = "text/javascript">
+
+	//node.parentNode : node를 감싼 부모태그
+	function searchPar(){
+		
+		var child02 = document.getElementsByTagName("p")[1];
+		var parent = child02.parentNode;
+		console.log(parent);
+		alert(parent.nodeName);
+		parent.style.backgroundColor = "dodgerblue";
+		
+		
+	}
+	
+	//node.childNodes : 자식 태그 반환 (배열)
+	function searchChi(){
+			
+		var div = document.getElementsByTagName("div")[0];
+		var childern = div.childNodes;
+		
+		children[1].style.backgroundColor ="hotpink";
+		console.log(children[1]);
+		
+	}
+	
+	function test01(){
+		
+		var p = document.getElementByTagName("p")[3];
+		var parent = p.parentNode;
+		parent.style.backgroundColor = "grey";
+		
+		
+	}
+	
+	function test02(){
+		
+		var div = document.getElementsByTagName("div")[2];
+		var children = div.childNodes;
+		children[3].style.fontSize = '20pt';
+		
+	}
+	
+
+</script>
+
+
+<body>
+
+	<h1>부모 탐색, 자식 탐색</h1>
+	<div>	
+		<p>child01</p>
+		<p>child02</p>
+		<p>child03</p>
+	</div>
+	
+	<button onclick = "searchPar();">부모 탐색</button>
+	<button onclick = "searchChi();">자식 탐색</button>
+	
+	<hr/>
+	<h3 onclick = "test01();">1. "test01 태그를 포함한  div 태그"의 배경색을 적용하자. </h3>
+	<h3 onclick = "test02();">2. "마지막 div 태그에 포함된 test04 태그"의 폰트 크기를 20pt로 적용하자</h3>
+	
+	<div>
+	
+		<p>test01</p>
+		<p>test02</p>
+		
+	</div>
+	
+		
+	<div>
+	
+		<p>test03</p>
+		<p>test04</p>
+		
+	</div>
+
+
+
+</body>
+</html>

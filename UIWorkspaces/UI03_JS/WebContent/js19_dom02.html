@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type = "text/javascript">
+
+
+	//1번 방법
+	//엘리먼트 객체 생성 : createElement("tagName");
+	//text 객체 생성 : createTextNode("text");
+	//객체의 속성 생성 : createAttribute("attrName");
+	//속성 추가 : setAttributeNode(attr);
+	//속성 생성 해서 추가 : setAttribute("attr" , "value");
+	
+	function createEle(){
+		
+		var div = document.createElement("div");
+		//<div></div>
+		
+		var attr = document.createAttribute("style");
+		//style = "";
+		attr.nodeValue = "border : 2px solid red";
+		//style = "border : 2px solid red";
+		
+		div.setAttributeNode(attr);
+		//<div style = "border : 2px solid red"></div>
+		
+		
+		//2번 방법
+		div.setAttribute("style", "border : 2px solid blue");
+		
+		
+		
+		
+		
+		var txt = document.createTextNode("엘리먼트 생성");
+		//"엘리먼트 생성"
+		div.appendChild(txt);
+		//<div style ="border : 2px solid red">엘리먼트 생성</div>
+		
+		document.body.appendChild(div);
+		
+	}
+
+
+
+</script>
+
+<body>
+
+	<button onclick ="createEle();">엘리먼트 생성</button>
+
+</body>
+</html>

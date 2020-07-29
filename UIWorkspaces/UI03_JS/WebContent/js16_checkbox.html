@@ -5,72 +5,110 @@
 <title>Insert title here</title>
 </head>
 
-<style type = "text/css">
-	
-	#colorbox{
-		
-		width : 320px;
-		height:320px;
-		position : relative;
-	}
+<style type="text/css">
+#colorbox {
+	width: 320px;
+	height: 320px;
+	position: relative;
+}
 
-	#red, #green, #blue, #purple{
-		
-		width : 150px;
-		height:150px;
-		border : 1px solid black;
-		position: absolute;
-	
-	}
-	
-	#green{left : 160px;}
-	#blue{top : 160px;}
-	#purple{left : 160px; top : 160px;}
+#red, #green, #blue, #purple {
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	position: absolute;
+}
 
+#green {
+	left: 160px;
+}
+
+#blue {
+	top: 160px;
+}
+
+#purple {
+	left: 160px;
+	top: 160px;
+}
 </style>
 
 <script type="text/javascript">
-	
-	function sel(){
+	function sel() {
 		var chks = document.getElementsByName("chk");
-		for(var i=0; i<chks.length;i++){
-			if(chks[i].checked){
+		for (var i = 0; i < chks.length; i++) {
+			if (chks[i].checked) {
 				document.getElementById(chks[i].value).style.backgroundColor = chks[i].value;
-				
-			}else{
+
+			} else {
 				//''로 해도 된다
 				document.getElementById(chks[i].value).style.backgroundColor = "white";
-				
+
 			}
+			
+		}
+	}
+
+	function allsel(bool) {
+
+		var chks = document.getElementsByName("chk");
+
+		for (var i = 0; i < chks.length; i++) {
+			chks[i].checked = bool;
+		}
+
+	}
+
+	function clearAll() {
+
+		/*
+		
+		var chks = document.getElementsByName("chk");
+		var all = document.getElementsByName("all");
+		all[0].checked = false;
+
+		for (var i = 0; i < chks.length; i++) {
+
+			chks[i].checked = false;
+			document.getElementById(chks[i].value).style.backgroundColor = "white";
+
 		}
 		
-	}
-	
+		*/
+		
+		var colorBox = document.querySelectorAll("#colorbox > div");
+		for(var i = 0; i < colorBox.length; i++){
+			
+			colorBox[i].style.backgroundColor = '';
+			
+		}
+		
+		document.getElementsByName("all")[0].checked = false;
+		allsel(false);
+		
 
+	}
 </script>
 
 <body>
 
-	<div id ="colorbox">
-		
-		<div id = "red">red</div>
-		<div id = "green">green</div>
-		<div id = "blue">blue</div>
-		<div id = "purple">purple</div>
-	
-	</div>
+	<div id="colorbox">
 
-	<div id = "base">
+		<div id="red">red</div>
+		<div id="green">green</div>
+		<div id="blue">blue</div>
+		<div id="purple">purple</div>
+
+	</div>
+	<div id="base">
 		<form>
-			<input type = "checkbox" name = "all" onclick = "allsel(this.checked);">전체 선택<br/>
-			<input type = "checkbox" name ="chk" value ="red"/>빨강<br/>
-			<input type = "checkbox" name ="chk" value ="green"/>초록<br/>
-			<input type = "checkbox" name ="chk" value ="blue"/>파랑<br/>
-			<input type = "checkbox" name ="chk" value ="purple"/>보라<br/>
-			
-			<input type= "button" value = "선택" onclick = "sel();"/>
-			<input type= "button" value = "clear" onclick = "clearAll();"/>
-			
+			<input type="checkbox" name="all" onclick="allsel(this.checked);">전체
+			선택<br /> <input type="checkbox" name="chk" value="red" />빨강<br />
+			<input type="checkbox" name="chk" value="green" />초록<br /> <input
+				type="checkbox" name="chk" value="blue" />파랑<br /> <input
+				type="checkbox" name="chk" value="purple" />보라<br /> <input
+				type="button" value="선택" onclick="sel();" /> <input type="button"
+				value="clear" onclick="clearAll();" />
 		</form>
 	</div>
 
