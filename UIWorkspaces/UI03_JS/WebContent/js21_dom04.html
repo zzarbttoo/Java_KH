@@ -49,6 +49,21 @@ a {
 		
 		anchs[1].onclick = function(){
 			
+			var alt = img.getAttribute("alt");
+			if(alt == "집5.PNG"){
+				
+				count = 1;
+				img.setAttribute("alt", "집1.PNG");
+				img.setAttribute("src", "resources/image/집1.PNG");
+				
+			}else{
+				
+				count ++;
+				img.setAttribute("alt", "집"+count+".PNG");
+				img.setAttribute("src", "resources/image/집" + count + ".PNG");
+				
+			}
+			
 		
 		}
 		

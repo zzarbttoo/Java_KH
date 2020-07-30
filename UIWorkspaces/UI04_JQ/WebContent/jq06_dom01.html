@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<script type = "text/javascript" src = "resources/js/jquery-3.5.1.min.js"></script>
+<script type = "text/javascript">
+
+
+	
+	$(function(){
+		
+		$("div > p").eq(0).click(function(){
+			
+			$("pre b").eq(0).toggle();
+			
+		});
+		
+		//1번 인덱스
+		$("div > p").eq(1).click(function(){
+			
+			$("pre b").slice(1, 2).toggle();
+			
+		})
+		
+		$("div > p").eq(2).click(function(){
+			
+			//$("pre b").first().css("color", "orange");
+			//$("pre b").eq(2).toggle();
+			
+			//end 하면 다시 맨 처음(pre b)으로 돌아간다
+			$("pre b").first().css("color", "olive").end().eq(2).toggle();
+			
+		});
+		
+		$("div > p").eq(3).click(function(){
+			
+			$("pre b").last().toggle();
+			
+		})
+		
+		
+		
+		
+	});
+
+</script>
+
+<body>
+
+<pre>
+<b>eq() 메서드 : 선택한 엘리먼트들 중에 인덱스로 검색</b>
+<b>slice() 메서드 : 선택한 엘리먼트들 중에 인덱스 길이로 탐색</b>
+<b>first() 메서드 : 선택한 엘리먼트들 중에 첫번째 요소 탐색</b>
+<b>last() 메서드 : 선택한 엘리먼트들 중에 마지막 요소 탐색</b>
+</pre>
+
+	<div>
+		<p>eq()</p>
+		<p>slice()</p>
+		<p>fist()</p>
+		<p>last()</p>
+	</div>
+	
+	
+</body>
+</html>

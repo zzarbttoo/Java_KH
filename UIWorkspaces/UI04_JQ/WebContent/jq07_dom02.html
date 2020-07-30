@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type = "text/javascript" src ="resources/js/jquery-3.5.1.min.js"></script>
+<script type = "text/javascript">
+
+	$(function(){
+			
+		$("div").find("b").css({"font-size" : "30px", "color" : "gold"});
+		$("div").children("#chd").text("2.children()");
+		$("p").parent().css("background-color", "ghostwhite");
+		//parents("div") <-조상요소 중 "div" 태그
+		$("p>b").parents("div").css("background-color", "gray");
+		$("p").eq(0).next().css("font-weight", "bold").css("color", "yellowgreen");
+		
+		
+	});
+
+
+
+</script>
+
+
+<body>
+
+	<pre>
+	
+		<b>find("selecotr") 메서드 : 
+		선택한 엘리먼트 자손들 중에 탐색하고자 하는 엘리먼트를 찾는다</b>
+		<b>children("selector") 메서드 :
+			선택한 엘리먼트의 자식요소들 중에 탐색하고자 하는 엘리먼트를 찾는다
+		</b>
+		<b>
+		parent()/parents("selector") 메서드:
+		선택한 엘리먼트의 부모요소 / 조상요소를 찾는다
+		</b>
+		
+		<b>next("selector") 메서드 :
+		선택한 엘리먼트 다음에 나오는 요소를 찾는다
+		</b>
+		
+	</pre>
+	<div>
+		<p><b>1</b></p>
+		<p id ="chd">2</p>
+		<p>3</p>
+		<p>4</p>
+		<p>5</p>
+	</div>
+
+
+</body>
+</html>

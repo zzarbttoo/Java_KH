@@ -38,7 +38,6 @@
 		for (var i = 0; i < vals.length; i++) {
 			var td = document.createElement("td");
 			td.textContent = vals[i];
-
 			tr.appendChild(td);
 
 		}
@@ -56,22 +55,8 @@
 		
 		//removeChild()
 		
-		/*
-		var list= document.querySelectorAll("#addtr > tr");
-		console.log(list);
-		console.log(ele);
-		var index = list.indexOf(ele);
-		console.log(index);
-		list.removeChild(list.childNodes[index]);
-		
-		*/
-		
 		var tr = ele.parentNode.parentNode;
 		document.getElementById("addtr").removeChild(tr);
-		
-		
-		
-		
 		
 	}
 	
