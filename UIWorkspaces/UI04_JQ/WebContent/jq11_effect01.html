@@ -5,7 +5,6 @@
 <title>Insert title here</title>
 </head>
 <style type="text/css">
-
 img {
 	width: 200px;
 	height: 200px;
@@ -24,15 +23,46 @@ p {
 </style>
 <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-
-//줄어드는 것도 하게나
+	//줄어드는 것도 하게나
 	$(function() {
 
+		var asset = ""
+		
 		$("b").click(function() {
 
 			console.log($("p").length);
 			//누르자마자 css 눈에 보이게 되고
-			$("p").toggle();
+
+			//$("p").css("display", "block");
+			if ( asset == "") {
+				
+		
+				$("p").css("display", "block");
+
+				$("p").each(function(i) {
+
+					$(this).animate({
+
+						"top" : 50 * (i + 1) + "px"
+
+					}, 1000);
+				});
+				
+				asset = "display";
+
+			} else {
+				
+				$("p").each(function(i){
+					
+					$(this).animate({"top" : 50 + "px"}, 1000);
+				});
+				
+				$("p").css("display", "none");
+				
+				asset = "";
+			
+			}
+			/*
 			
 			
 			//each를 이용해 p 태그 각각의 에니메이션을 지정해줌
@@ -45,9 +75,10 @@ p {
 				$(this).animate({
 					"top" : 50 * (i + 1) + "px"
 				}, 1000);
+				
+			 */
 
-			});
-
+			//if($("p").attr("display") == "none"){
 		});
 
 		//올리는 것도 하자
@@ -57,7 +88,7 @@ p {
 			//ele는 지금 클릭된 p 태그를 의미한다
 			//그 클릭된 p 태그의 배경은 핑크색이 되고 p태그(sibling([selector]))의 배경색은 없어지게 된다
 			//siblings : 같은 부모 밑에 있는 모든 것들(형제 요소들을 탐색)
-			
+
 			var ele = $(this);
 			ele.css("background", "hotpink");
 			ele.siblings("p").css("background-color", "");
@@ -76,7 +107,6 @@ p {
 			}
 
 			if (ele.is("p:contains(toggle)")) {
-				
 
 				$("img").toggle();
 
@@ -125,9 +155,8 @@ p {
 
 			}
 			
-			*/
-			 
-			
+			 */
+
 			if (ele.is("p:contains(fadeToggle)")) {
 
 				$("img").fadeToggle();
@@ -135,7 +164,6 @@ p {
 			}
 			if (ele.is("p:contains(animate)")) {
 
-				ㅏ
 				$("img").animate({
 
 					"width" : "500px",
