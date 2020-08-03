@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type = "text/css">
+	
+	img{
+		width : 150px;
+		height : 150px;
+		float : left;
+	}
+	
+	#menubox{
+		
+		position : relative;
+	}
+	
+	#menu{
+		overflow : auto;
+	}
+	
+	.sel{
+	
+		width : 140px;
+		height: 140px;
+		border : 5px dotted yellow;
+		position : absolute;
+		left : 300px;
+		
+	}
+	
+	button{
+		width : 150px;
+		height: 50px;
+		margin-left : 300px;
+	}
+
+</style>
+
+<script type = "text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+<script type = "text/javascript">
+
+	$(function(){
+		
+		//setInterval 은 주기적으로 function을 호출해주며, 50millisecond마다 함수를 호출한다
+		setInterval(function(){
+			
+			var div = $("#menu");
+			
+			console.log($(".active").first);
+			//지금 동작하는 거 중 첫번째 
+			$(".active").first().appendTo(div);
+			}, 100);
+		
+		$("button").click(function(){
+			
+			//img 에 active라는 class 를 단다
+			$("img").toggleClass("active");
+			
+			
+			if($("button").text() == "start"){
+				$("button").text("stop");
+				
+			}else{
+				
+				$("button").text("start");
+				//console.log($("img"));
+				alert("선택된 이미지는 " + $("img:eq(2)").attr("alt")+ "입니다");
+				
+			}
+		});
+		
+	});
+
+</script>
+
+<body>
+
+	<h1>이미지를 선택해 주세요</h1>
+	
+	<div id="menubox">
+		<div class ="sel"></div>
+	
+		<div id= "menu">
+			<img alt = "img01" src = "resources/image/집1.PNG"/>
+			<img alt = "img02" src = "resources/image/집2.PNG"/>
+			<img alt = "img03" src = "resources/image/집3.PNG"/>
+			<img alt = "img04" src = "resources/image/집4.PNG"/>
+			<img alt = "img05" src = "resources/image/집5.PNG"/>
+		</div>
+			
+		<button>start</button>
+	</div>
+
+</body>
+</html>

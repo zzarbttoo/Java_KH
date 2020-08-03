@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type = "text/css">
+	
+	img{
+		width : 200px;
+		height : 200px;
+	}
+
+	.addsize{
+	
+		width : 300px;
+		height : 300px;
+	}
+	
+	.onoffimg{
+	
+		display : none;
+	
+	}
+	
+
+</style>
+
+<script type = "text/javascript" src ="resources/js/jquery-3.5.1.min.js"></script>
+<script type = "text/javascript">
+
+	$(function(){
+		
+		$("img").click(function(){
+			//addsize라는 class가 클릭된 애한테 있나 물어볼 것임
+			if($(this).hasClass("addsize")){
+				//removeClass를 통해 부여된 Class가 사라진다
+				$(this).removeClass("addsize").attr("title", "이미지 축소");
+			}else{
+				
+				$(this).addClass("addsize").attr("title", "이미지 확대");
+				
+			}
+			
+		});
+		
+		$("#btn").click(function(){
+			
+			//toggleClass <-class가 없는 상황이면 class를 넣어주고, 
+			//class 가 있다면 없애준다(removeClass + addClass 이다)
+			//toggleClass를 통해 클릭하는 순간 onoffimgClass가 추가된다
+			$("img").toggleClass("onoffimg");
+			
+		});
+		
+	});
+
+
+</script>
+<body>
+
+
+	<button id = "btn">이미지 on/off</button>
+	<br/>
+	
+	<img alt = "집1" src = "resources/image/집1.PNG" title  ="이미지 1번"/>
+	<img alt = "집2" src = "resources/image/집2.PNG" title  ="이미지 2번"/>
+	<img alt = "집3" src = "resources/image/집3.PNG" title  ="이미지 3번"/>
+	
+
+</body>
+</html>

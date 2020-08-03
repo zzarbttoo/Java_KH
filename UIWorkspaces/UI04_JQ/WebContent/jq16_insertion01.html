@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type = "text/css">
+
+	div{
+		border : 1px solid red;
+	}
+	
+	.prepend{
+		border : 1px solid blue;
+	
+	}
+	
+	.append{
+		border : 1px solid green;
+	}
+
+
+</style>
+<script type = "text/javascript" src = "resources/js/jquery-3.5.1.min.js"></script>
+<script type = "text/javascript">
+
+	
+	$(function(){
+		
+		var cnt = 0;
+		
+		$("button:eq(0)").click(function(){
+			
+			//$("target").prepend() : target의 자식요소 중 가장 앞에
+			$("div").prepend($("<p>").addClass("prepend").text("prepend" + (++cnt)));
+		});
+		$("button:eq(1)").click(function(){
+			//$("target").append() : target의 자식요소 중 가장 뒤에
+			$("div").append($("<p>").addClass("append").text("append" + (++cnt)));
+		});
+		
+		$("button:eq(2)").click(function(){
+			
+			//이거 자체가 html이기 때문에 div 내부의 요소, bold체가 된다
+			$("div").html("<b>html 요소를 바꾼다</b>");
+		});
+		
+		$("button:eq(3)").click(function(){
+			//이거가 문자열이기 때문에 bold체가 되지 않는다
+			$("div").text("<b>text 요소를 바꾼다</b>");
+			
+		});
+	});
+
+</script>
+<body>
+
+	
+	<button>prepend</button>
+	<button>append</button>
+	<button>html</button>
+	<button>text</button>
+	
+	<div>
+		<p>내부 삽입 1</p>
+		<p>내부 삽입 2</p>
+	</div>
+
+</body>
+</html>
