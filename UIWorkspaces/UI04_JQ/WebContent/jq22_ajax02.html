@@ -38,18 +38,19 @@ body {
 			
 			$.ajax({
 				
+				//해당 경로에 있는 값이 원래 문자열로 오게 된다
 				url : "emplist.xml",
+				//dataType 하면 xml 객체로 만들어준다 = data가 된다
 				dataType  : "xml",
 				//request가 성공했을 때 함수 실행(파라미터 data)
 				
 				success : function(data){
 					//서버로 보낼 데이터를 함수 값으로 넣어줌
-					console.log(data);
-					
-					//find는 DOM tree를 찾아주는 함수
+					//find는 값에 해당하는 자식 요소를 찾아줘서, 새로운 jQuery object를 만들어준다
+					//배열처럼 사용하게 된다
 					var empRowList  = $(data).find("ROW");
-					console.log(empRowList);
-					console.log(makeTable(empRowList));
+					//script로 연결돼있기 때문에 그냥 함수를 사용할 수 있다
+					//script 파일이 위에 있어야한다
 					$("body").append(makeTable(empRowList));
 					
 				},
