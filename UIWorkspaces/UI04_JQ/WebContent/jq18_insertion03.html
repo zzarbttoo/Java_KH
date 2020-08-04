@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type = "text/css">
+
+	div{
+		border: 1px solid blue;
+	}
+
+
+</style>
+<script type = "text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+<script type = "text/javascript">
+
+	$(function(){
+		
+		
+		$("button:eq(0)").click(function(){
+			
+			$("#base").after("<div>새로운 엘리먼트</div>");
+			
+		});
+			
+		$("button:eq(1)").click(function(){
+			$("<div>새로운 엘리먼트(insertAfter)</div>").insertAfter("#base");
+			
+		});
+		
+		$("button:eq(2)").click(function(){
+			
+			$("#base").before("<div>새로운 엘리먼트(before)</div>");
+			
+		});
+		
+		$("button:eq(3)").click(function(){
+			
+			$("<div>새로운 엘리먼트(insertBefore)</div>").insertBefore("#base");
+			
+		});
+	});
+
+
+</script>
+
+<body>
+
+
+
+	<button>after()</button>
+	<button>insertAfter()</button>
+	<button>before()</button>
+	<button>insertBefore()</button>
+
+
+	<div id = "base">
+		<p>외부 삽입</p>
+	
+	</div>
+
+</body>
+</html>
