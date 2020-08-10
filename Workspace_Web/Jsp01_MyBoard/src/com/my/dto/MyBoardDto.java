@@ -2,30 +2,25 @@ package com.my.dto;
 
 import java.util.Date;
 
+//DTO : Data Transaction Object 
 public class MyBoardDto {
-	
-	
+
 	private int myno;
 	private String myname;
 	private String mytitle;
 	private String mycontent;
 	private Date mydate;
-	
-	
+
 	public MyBoardDto() {
-		
-		
+
 	}
-	
+
 	public MyBoardDto(int myno, String myname, String mytitle, String mycontent, Date mydate) {
-		
 		this.myno = myno;
 		this.myname = myname;
 		this.mytitle = mytitle;
 		this.mycontent = mycontent;
 		this.mydate = mydate;
-		
-		
 	}
 
 	public int getMyno() {
@@ -67,7 +62,5 @@ public class MyBoardDto {
 	public void setMydate(Date mydate) {
 		this.mydate = mydate;
 	}
-	
-
 
 }

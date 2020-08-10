@@ -15,34 +15,25 @@
 </head>
 <body>
 
-	<h1>Insert</h1>
-
-	<form action="myinsertres.jsp" method="post">
+	<form action="mdinsertres.jsp" method="post">
 
 		<table border="1">
 			<tr>
-				<th>이름</th>
-				<td><input type="text" name = "myname"></td>
+				<th>작성자</th>
+				<td><input type="text" name="mdWriter" /></td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name = "mytitle"></td>
+				<td><input type="text" name="mdTitle" /></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><input type="text" name = "mycontent"></td>
+				<td><textarea rows="10" cols="60" name="mdcontent"></textarea></td>
 			</tr>
 			<tr>
-				<td>
-				
-				<input type="button" value="취소" onclick="" /> 
-				<input type="submit" value="작성" /></td>
+				<td colspan="2"><input type="button" value="취소" onclick="" />
+					<input type="submit" value="작성" /></td>
 			</tr>
-
-
-
-
-
 		</table>
 
 	</form>

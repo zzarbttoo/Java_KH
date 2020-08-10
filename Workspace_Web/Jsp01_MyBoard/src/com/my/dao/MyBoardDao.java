@@ -11,21 +11,26 @@ import java.util.List;
 
 import com.my.dto.MyBoardDto;
 
+//DAO  : Data Access Object
 public class MyBoardDao {
 
-	// 전체 출력
-	public List<MyBoardDto> selectList() {
+	public MyBoardDao() {
 
-		// 1. driver 연결
+	}
+
+	public List<MyBoardDto> select() {
+
+		// 1. driver연결 -> ojdbc6.jar 안넣고 하면 classnotfound 된다
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("1. driver 연결");
 		} catch (ClassNotFoundException e) {
-			System.out.println("[error] 1.");
 			e.printStackTrace();
 		}
 
 		// 2. 계정 연결
+
+		// database connection url <-지금은 컴퓨터 내부에 있어서 localhost에 있는 것이다
+		// 나중에 세미 할때는 다르게 쓸 것이다 (학원에서 서버를 만들어 놓았따!)<-팀끼리 같은 데이터베이스를 공유할 수 있다
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "kh";
 		String password = "kh";
@@ -34,32 +39,28 @@ public class MyBoardDao {
 
 		try {
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("2. 계정 연결");
 		} catch (SQLException e) {
-			System.out.println("[error] 2");
 			e.printStackTrace();
 		}
 
 		// 3. query 준비
+		String sql = " SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE FROM MYBOARD ORDER BY MYNO DESC ";
 
 		Statement stmt = null;
+		// table을 저장할 수 있는 객체
 		ResultSet rs = null;
 
 		List<MyBoardDto> list = new ArrayList<MyBoardDto>();
-
-		String sql = " SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE " + " FROM MYBOARD " + " ORDER BY MYNO DESC ";
+		MyBoardDto dto = null;
 
 		try {
 			stmt = con.createStatement();
-			System.out.println("3. query 준비 : " + sql);
-			// 4. query 실행 및 리턴
-
 			rs = stmt.executeQuery(sql);
-			System.out.println("4. query 실행 및 리턴");
 
 			while (rs.next()) {
 
-				MyBoardDto dto = new MyBoardDto();
+				dto = new MyBoardDto();
+
 				dto.setMyno(rs.getInt(1));
 				dto.setMyname(rs.getString(2));
 				dto.setMytitle(rs.getString(3));
@@ -67,45 +68,35 @@ public class MyBoardDao {
 				dto.setMydate(rs.getDate(5));
 
 				list.add(dto);
-
 			}
 
 		} catch (SQLException e) {
-			System.out.println("error 3.4");
 			e.printStackTrace();
 		} finally {
 
-			// 5. db종료
 			try {
-
 				rs.close();
 				stmt.close();
 				con.close();
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		return list;
 
 	}
 
-	// 선택 출력
-
 	public MyBoardDto selectOne(int myno) {
 
-		// 1.
+		System.out.println(myno);
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("1. driver 연결");
 		} catch (ClassNotFoundException e) {
-			System.out.println("[error] 1.");
 			e.printStackTrace();
+			System.out.println("여기에러냐1");
 		}
-
-		// 2.
 
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "kh";
@@ -115,72 +106,72 @@ public class MyBoardDao {
 
 		try {
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("계정 연결");
 		} catch (SQLException e) {
-			System.out.println("[error] 2.");
 			e.printStackTrace();
+
+			System.out.println("여기에러냐2");
 		}
-		// 3.
+
+		String sql = " SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE FROM MYBOARD WHERE MYNO = ? ";
 
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
+
 		MyBoardDto dto = null;
 
-		String sql = " SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE " + " FROM MYBOARD " + " WHERE MYNO = ? ";
-
 		try {
+			// statement <- 쿼리를 전달하고 실행시켜주는 애 그리고 리턴도 받아준다
 			pstm = con.prepareStatement(sql);
-
+			System.out.println("여기 에러냐 11");
 			pstm.setInt(1, myno);
-			System.out.println("3. query 준비 :" + sql);
 
+			System.out.println("여기 에러냐22");
 			rs = pstm.executeQuery();
-			System.out.println("4. query 실행 및 리턴");
 
+			dto = new MyBoardDto();
+
+			System.out.println("여기 에러냐33");
 			while (rs.next()) {
 
-				// 여기서 선언하는거랑 앞에서 하는 것은 좀 다르다
-				dto = new MyBoardDto();
 				dto.setMyno(rs.getInt(1));
 				dto.setMyname(rs.getString(2));
 				dto.setMytitle(rs.getString(3));
 				dto.setMycontent(rs.getString(4));
 				dto.setMydate(rs.getDate(5));
 
+				System.out.println("여기 에러냐44");
 			}
+
 		} catch (SQLException e) {
-			System.out.println("[error] 3.4.");
 			e.printStackTrace();
+
+			System.out.println("여기에러냐3");
 		} finally {
 
 			try {
-				rs.close();
 				pstm.close();
+				rs.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+
+				System.out.println("여기에러냐4");
 			}
 
 		}
 
 		return dto;
+
 	}
 
-	// 추가
+	// 추가 : 이름(myname), 제목(mytitle), 내용(mycontent)
 	public int insert(MyBoardDto dto) {
-
-		// 1.
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("1. driver 생성");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			System.out.println("1 error");
 		}
-
-		// 2.
 
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "kh";
@@ -190,66 +181,55 @@ public class MyBoardDao {
 
 		try {
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("2. 연결");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("error 2");
 		}
 
-		// 3.
+		String sql = " INSERT INTO MYBOARD VALUES(MYSEQ.NEXTVAL, ?, ?, ?, SYSDATE) ";
 
 		PreparedStatement pstm = null;
 		int res = 0;
 
-		String sql = " INSERT INTO MYBOARD " + " VALUES (MYSEQ.NEXTVAL, ?, ?, ?, SYSDATE) ";
-
-		// 4.
-
 		try {
-
 			pstm = con.prepareStatement(sql);
+
 			pstm.setString(1, dto.getMyname());
 			pstm.setString(2, dto.getMytitle());
 			pstm.setString(3, dto.getMycontent());
-			System.out.println("3. 쿼리 준비");
 
-			System.out.println("4. 쿼리 실행 및 리턴");
 			res = pstm.executeUpdate();
-			System.out.println();
 
+			if (res > 0) {
+
+				System.out.println("성공");
+
+			} else {
+
+				System.out.println("실패");
+
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-
-			try {
-
-				System.out.println("db 종료");
-				pstm.close();
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
 		}
-
-		// 5.
 
 		return res;
 
 	}
 
-	// 수정
+	// 수정 : 제목 내용 번호 <-만일 수정한 날짜까지 바꾸고 싶다면 mydate도 바꿔주면 된다
+
 	public int update(MyBoardDto dto) {
 
 		
+		//1. driver
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("드라이버 연결 ");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		
+		//2. 계정 연결
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "kh";
 		String password = "kh";
@@ -264,7 +244,7 @@ public class MyBoardDao {
 			System.out.println("[error]2.");
 		}
 		
-		//3. 
+		//3. 쿼리 준비
 		PreparedStatement pstm = null;
 		int res = 0;
 		
@@ -279,6 +259,9 @@ public class MyBoardDao {
 			
 		res = pstm.executeUpdate();
 		System.out.println("5");
+		
+			System.out.println(res);
+			System.out.println("돼는거 맞냐냐냐");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -298,115 +281,68 @@ public class MyBoardDao {
 		
 		return res;
 
+
 	}
 
-	// 삭제
-
+	// 삭제 : 번호
 	public int delete(int myno) {
-		
+
+		System.out.println("어디가 문제");
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "kh";
 		String password = "kh";
-		
+
 		Connection con = null;
-		
+
 		try {
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("2. 계정 연결");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("2. error");
 		}
-		
+
+		String sql = " DELETE FROM MYBOARD WHERE MYNO = ? ";
+
 		PreparedStatement pstm = null;
 		int res = 0;
-		
-		
-		String sql = " DELETE FROM MYBOARD WHERE MYNO = ? ";
-		
+
 		try {
+
+			System.out.println("어디가 문제11");
 			pstm = con.prepareStatement(sql);
 			pstm.setInt(1, myno);
-			System.out.println("3. query 준비" + sql);
-			
-			
-			//4. 
+
 			res = pstm.executeUpdate();
-			System.out.println("4. query 실행 및 리턴");
+
+			System.out.println("어디가 문제22");
+			if (res > 0) {
+
+				System.out.println("삭제 성공");
+
+			} else {
+
+				System.out.println("삭제 실패");
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
-			
+		} finally {
+
 			try {
 				pstm.close();
 				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			System.out.println("5. db 종료");
+
 		}
-		
-		
 		return res;
-		
-		/*
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
 
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "kh";
-		String password = "kh";
-
-		Connection con = null;
-
-		try {
-			con = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		PreparedStatement pstm = null;
-		int res = 0;
-
-		String sql = " DELETE FROM MYBOARD WHERE MYNO = ? ";
-
-		try {
-
-			pstm = con.prepareStatement(sql);
-			pstm.setInt(1, myno);
-			
-			res = pstm.executeUpdate();
-			
-			if(res > 0) {
-				
-				System.out.println("");
-			}else {
-				
-				System.out.println("fail");
-				
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return res;
-		
-		*/
-		
-	
 	}
 
 }
