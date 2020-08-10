@@ -127,6 +127,7 @@ public class MDBoardDao {
 			if (res > 0) {
 
 				System.out.println("성공");
+				commit(con);
 
 			} else {
 
@@ -163,6 +164,7 @@ public class MDBoardDao {
 			if (res > 0) {
 
 				System.out.println("성공");
+				commit(con);
 
 			} else {
 
@@ -196,7 +198,7 @@ public class MDBoardDao {
 		
 		String sql = " INSERT INTO MDBOARD VALUES (MDBOARDSEQ.NEXTVAL, ?, ?, ?, SYSDATE) ";
 				
-				
+			
 		
 		try {
 			pstm = con.prepareStatement(sql);
@@ -204,11 +206,20 @@ public class MDBoardDao {
 			pstm.setString(2, dto.getTitle());
 			pstm.setString(3, dto.getContent());
 			
+			
+			System.out.println(dto.getWriter());
+			System.out.println(dto.getTitle());
+			System.out.println(dto.getContent());
+			
+			
+			
 			res = pstm.executeUpdate();
+			System.out.println(res);
 			
 			if(res > 0) {
 				
 				System.out.println("성공");
+				commit(con);
 				
 			}else {
 				

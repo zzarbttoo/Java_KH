@@ -24,12 +24,12 @@ public class MDBoardBiz {
 
 	public int update(MDBoardDto dto) {
 
-		return 0;
+		return dao.update(dto);
 	}
 
-	public int delete() {
+	public int delete(int seq) {
 
-		return 0;
+		return dao.delete(seq);
 	}
 
 	public int insert(MDBoardDto dto) {

@@ -25,8 +25,8 @@
 	MDBoardDto dto = new MDBoardDto(mdWriter, mdTitle, mdContent);
 	MDBoardBiz biz = new MDBoardBiz();
 	
-	
-	int res =biz.insert(dto);
+	int res=biz.insert(dto);
+	System.out.println(res);
 	 
 	if(res > 0){
 %>

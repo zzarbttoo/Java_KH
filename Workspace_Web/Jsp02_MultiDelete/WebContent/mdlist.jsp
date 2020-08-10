@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ 
-	page import="com.muldel.biz.MDBoardBiz" import="java.util.List"
-	import="com.muldel.dto.MDBoardDto"%>
+	page 
+	import="com.muldel.biz.MDBoardBiz" 
+	import="java.util.List"
+	import="com.muldel.dto.MDBoardDto"	
+%>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -23,6 +27,7 @@
 	
 	function allChk(bool){
 		
+		/*
 		var checkbox = document.getElementsByName("chk");
 		console.log(checkbox);
 		for(var i = 0; i < checkbox.length ; i++){
@@ -30,13 +35,19 @@
 			checkbox[i].checked = bool;
 		}
 		
+		*/
+		$("input[name=chk]").each(function(){
+			
+			$(this).prop("checked", bool);
+		});
+		
 	}
 	
 	
 	//유효성 검사
 	$(function(){
 		
-		$("#muldelform").submit(function(){
+			$("#muldelform").submit(function(){
 			
 			
 			//아무것도 체크돼있지 않은 상태이다
@@ -51,9 +62,27 @@
 			}
 			
 		});
+		
+		$("input[name = chk]").click(function(){
+			
+			if($("input[name = chk]").length == $("input[name=chk]:checked").length){
+				
+				$("input[name = all]").prop("checked", true);
+				
+			}else{
+				
+				$("input[name=all]").prop("checked", false);
+				
+			}
+		});
+		
 	});
 	
-	
+		
+	function writeForm(){
+		
+		location.href = "mdinsert.jsp";
+	}
 	 
 
 </script>
@@ -111,7 +140,7 @@ List<MDBoardDto> list = biz.selectList();
 			
 			<tr>	
 				<td colspan = "5" align = "right">
-					<input type = "button" value  ="글작성" onclick ="location.href='mdinsert.jsp'"/>
+					<input type = "button" value  ="글작성" onclick ="writeForm();"/>
 					<input type = "submit" value ="선택삭제"/>
 				</td>
 			</tr>
