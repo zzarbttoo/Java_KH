@@ -15,7 +15,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% MVCBoardDto dto = (MVCBoardDto)request.getAttribute("dto"); %>
+<% 
+
+	MVCBoardDto dto = (MVCBoardDto)request.getAttribute("dto"); 
+	System.out.println("여기냐");
+	System.out.println(dto.getContent());
+	System.out.println(dto.getSeq());
+	System.out.println(dto.getTitle());
+	System.out.println(dto);
+	
+%>
 
 	<table border = "1">
 		<tr>

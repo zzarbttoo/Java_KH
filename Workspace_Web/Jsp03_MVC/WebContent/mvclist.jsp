@@ -41,22 +41,24 @@
 				
 				for(MVCBoardDto dto : list){
 		%>
-				<tr>
-					<td><%=dto.getSeq() %></td>
-					<td><%=dto.getWriter() %></td>
-					<td><a href="mvccontroller.jsp?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle() %></a></td>
-					<td><%=dto.getRegdate() %></td>
-				</tr>
-		
-				<%} %>
+		<tr>
+			<td><%=dto.getSeq() %></td>
+			<td><%=dto.getWriter() %></td>
+			<td><a
+				href="mvccontroller.jsp?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle() %></a></td>
+			<% System.out.println("왜되냐안되냐딱대");
+			System.out.println(dto.getSeq()); %>
+			<td><%=dto.getRegdate() %></td>
+		</tr>
+
+		<%} %>
 		<%
 			}
 		%>
-		
+
 		<tr>
-			<td colspan = "4" align = "right">
-				<input type = "button" value = "글작성" onclick = "location.href='mvccontroller.jsp?command=insertform'"/>
-			</td>
+			<td colspan="4" align="right"><input type="button" value="글작성"
+				onclick="location.href='mvccontroller.jsp?command=insertform'" /></td>
 		</tr>
 	</table>
 

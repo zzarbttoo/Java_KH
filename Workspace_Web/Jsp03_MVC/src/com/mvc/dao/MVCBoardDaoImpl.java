@@ -68,12 +68,8 @@ public class MVCBoardDaoImpl extends JDBCTemplate implements MVCBoardDao {
 			rs = pstm.executeQuery();
 			
 			while(rs.next()) {
-				
-				dto = new MVCBoardDto();
-				dto.setWriter(rs.getString("WRITER"));
-				dto.setTitle(rs.getString("TITLE"));
-				dto.setContent(rs.getString("CONTENT"));
-				
+				//여기서 0값이 들어가지 않도록 조심하자
+				dto = new MVCBoardDto(rs.getInt("SEQ"),rs.getString("WRITER"), rs.getString("TITLE"), rs.getString("CONTENT"), rs.getDate("REGDATE"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -137,6 +133,12 @@ public class MVCBoardDaoImpl extends JDBCTemplate implements MVCBoardDao {
 			pstm.setInt(4, dto.getSeq());
 
 			res=pstm.executeUpdate();
+			System.out.println("update 뭐가 문제임");
+			System.out.println(res);
+			if(res > 0) {
+				
+				commit(con);
+			}
 			
 
 		} catch (SQLException e) {
@@ -161,6 +163,12 @@ public class MVCBoardDaoImpl extends JDBCTemplate implements MVCBoardDao {
 			pstm.setInt(1, seq);
 			
 			res = pstm.executeUpdate();
+			
+			if(res > 0) {
+				
+				commit(con);
+				
+			}
 			
 			
 		} catch (SQLException e) {

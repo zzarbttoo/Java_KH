@@ -23,8 +23,6 @@ public class MVCBoardBizImpl implements MVCBoardBiz {
 
 	@Override
 	public boolean insert(MVCBoardDto dto) {
-		
-		
 		return dao.insert(dto);
 	}
 

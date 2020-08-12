@@ -78,33 +78,83 @@
 
 	} else if (command.equals("update")) {
 
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		MVCBoardDto dto = biz.selectOne(seq);
+		System.out.println(dto.getSeq());
+		System.out.println(dto.getContent());
+
+		request.setAttribute("dto", dto);
+		pageContext.forward("update.jsp");
+
 	} else if (command.equals("updateres")) {
 
-	} else if (command.equals("delete")) {
-
-		System.out.println("잘된거맞냐");
-		//1.
 		int seq = Integer.parseInt(request.getParameter("seq"));
-
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		System.out.println("여기가 맛집이다 아주.");
 		System.out.println(seq);
+		System.out.println(writer);
+		System.out.println(title);
+		System.out.println(content);
+
+		MVCBoardDto dto = biz.selectOne(seq);
+		System.out.println(dto.getSeq());
+		System.out.println(dto.getContent());
+		System.out.println(dto);
+		dto.setWriter(writer);
+		dto.setTitle(title);
+		dto.setContent(content);
 		
-		//3. 
-		if (biz.delete(seq)) {
+		System.out.println(dto.getSeq());
+		System.out.println(dto.getContent());
+		System.out.println("이야 디버깅 맛집");
+		
+		
+		
+		
+		if (biz.update(dto)) {
 	%>
-		<script type = "text/javascript">
-			alert("삭제 성공");
-			location.href="mvccontroller.jsp?command=list";
-		</script>
-	
-	
+
+	<script type="text/javascript">
+		alert("수정 성공");
+		location.href = "mvccontroller.jsp?command=list";
+	</script>
+
 	<%
 		} else {
 	%>
-		<script type = "text/javascript">
-			alert("삭제 실패");
-			location.href="mvccontroller.jsp?command=delete";
-		</script>
-	
+
+	<script type="text/javascript">
+		alert("수정 실패");
+		location.href = "mvccontroller.jsp?command=update";
+	</script>
+
+
+	<%
+		}
+
+	} else if (command.equals("delete")) {
+		//1. 
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		//3. 
+		if (biz.delete(seq)) {
+	%>
+
+	<script type="text/javascript">
+		alert("삭제 성공");
+		location.href = "mvccontroller.jsp?command=list";
+	</script>
+
+
+	<%
+		} else {
+	%>
+	<script type="text/javascript">
+		alert("삭제 실패");
+		location.href = "mvccontroller.jsp?command=delete";
+	</script>
+
 	<%
 		}
 
