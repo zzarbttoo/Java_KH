@@ -44,6 +44,7 @@
 			<input type = "button" value = "취소" onclick =""/>
 			<input type = "button" value = "수정" onclick = "location.href='mvccontroller.jsp?command=update&seq=<%=dto.getSeq()%>'"/>
 			<input type = "button" value = "삭제" onclick = "location.href='mvccontroller.jsp?command=delete&seq=<%=dto.getSeq()%>'" />
+			<input type = "button" value= "목록" onclick = ""/>
 			</td>
 			
 		</tr>

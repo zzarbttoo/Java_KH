@@ -133,8 +133,6 @@ public class MVCBoardDaoImpl extends JDBCTemplate implements MVCBoardDao {
 			pstm.setInt(4, dto.getSeq());
 
 			res=pstm.executeUpdate();
-			System.out.println("update 뭐가 문제임");
-			System.out.println(res);
 			if(res > 0) {
 				
 				commit(con);
