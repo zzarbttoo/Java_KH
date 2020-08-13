@@ -1,3 +1,20 @@
+<%
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Cache-control", "no-store");
+	response.setHeader("Expires", "0");
+	
+/*
+	데이터가 변경되었을 때, 이전 내용을 화면에 보여주는 이유
+	->서버 리턴값이 아닌 캐시에 저장된 값을 가져오기 때문
+	
+	브라우저가 캐시에 응답결과를 저장하지 않도록 설정
+	response.setHeader("Pragma", "no-cache"); // http 1.0
+	response.setHeader("Cache-control", "no-store"); http 1.1
+	response.setHeader("Expires", "0"); //proxy server
+*/
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page
@@ -14,6 +31,11 @@
 </head>
 <%
 	MYDto dto = (MYDto) session.getAttribute("login");
+	if(dto == null){
+		
+		pageContext.forward("index.jsp");
+		
+	}
 %>
 <body>
 

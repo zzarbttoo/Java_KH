@@ -9,6 +9,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type = "text/javascript">
+	
+	function updateRole(myno){
+		
+		location.href="logincontroller.jsp?command=updaterole&myno=" + myno;
+		
+	}
+
+</script>
+
 </head>
 <%
 	List<MYDto> list = (List<MYDto>) request.getAttribute("list");

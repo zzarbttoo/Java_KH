@@ -29,6 +29,18 @@ public class MYDto {
 		this.myenabled = enabled;
 		this.myrole = myrole;
 	}
+	
+	
+	
+	public MYDto(String myid, String mypw, String myname, String myaddr, String myphone, String myemail) {
+		this.myid = myid;
+		this.mypw = mypw;
+		this.myname = myname;
+		this.myaddr = myaddr;
+		this.myphone = myphone;
+		this.myemail = myemail;
+	}
+
 	public int getMyno() {
 		return myno;
 	}

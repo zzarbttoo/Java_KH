@@ -76,15 +76,105 @@
 		pageContext.forward("listenabled.jsp");
 		
 	}else if(command.equals("registform")){
-		
-		System.out.println("여기 온거는ㄴ 맞지?");
 		response.sendRedirect("registform.jsp");
+		
 	}else if(command.equals("registformres")){
 		
 		String id = request.getParameter("id");
+		String password = request.getParameter("password");
 		String name =request.getParameter("name");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		
+		MYDto dto = new MYDto(id, password, name, address, phone, email);
+		
+		int res = dao.register(dto);
+		
+		if(res > 0){
+		
+			%>
+			<script type= "text/javascript">
+				alert("입력 성공");
+				location.href="index.jsp";
+			</script>
+			<%
+			
+		}else{
+			
+			%>
+			<script type ="text/javascript">
+				alert("입력 실패");
+				location.href = "registform.jsp";
+			
+			</script>
+			
+			<% 
+		}
+	}else if(command.equals("idchk")){
+		
+		String id = request.getParameter("id");
+		System.out.println("되는거 맞냐");
+		System.out.println(id);
+		MYDto dto = dao.idCheck(id);
+		boolean idnotused = true;
+		
+		if(dto.getMyid()!=null){
+			
+			idnotused = false;
+			
+		}
+		
+		System.out.println(idnotused);
+		
+	response.sendRedirect("idchk.jsp?idnotused="+idnotused);
+	}else if(command.equals("updaterole")){
+		//1.
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		
+		//2.
+		MYDto dto = dao.selectOne(myno);
+		
+		request.setAttribute("dto", dto);
+		
+		pageContext.forward("adminupdaterole.jsp");
+		
+		
+		
+	}else if(command.equals("updateroleres")){
+		//1. 
+		
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		String myrole = request.getParameter("myrole");
+		//2. 
+		int res = dao.updateUserRole(myno, myrole);
+		//3. X
+		
+		//4.
+		if (res >0){
+			
+%>
+		<script type = "text/javascript">
+			alert("등급 변경 성공");
+			location.href="adminmain.jsp";
+		</script>
+<% 
+			
+		}else{
+			
+			
+%>
+
+		<script type = "text/javascript">
+			alert("등급 변경 실패");
+			location.href="adminupdaterole.jsp";
+		</script>
+<% 
+		}
 		
 	}
+	
+	
 	
 	
 	
