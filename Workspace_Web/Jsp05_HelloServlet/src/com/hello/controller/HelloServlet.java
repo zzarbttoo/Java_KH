@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class HelloServlet
- */
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,9 +17,7 @@ public class HelloServlet extends HttpServlet {
 	private String initParameter;
 	private String contextParameter;
 
-	/**
-	 * Default constructor.
-	 */
+	
 	public HelloServlet() {
 
 		System.out.println("HelloServlet 객체 생성");
