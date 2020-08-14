@@ -329,7 +329,88 @@ public class MYDao {
 	}
 
 	// 4. 내 정보 수정
+	public int update(MYDto dto){
+		
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		String sql = " UPDATE MYMEMBER SET MYID =?, MYPW = ?, MYNAME= ?, MYADDR = ?, MYPHONE = ?, MYEMAIL = ? WHERE MYNO = ? ";	
+		
+		try {
+			pstm= con.prepareStatement(sql);
+			
+			pstm.setString(1, dto.getMyid());
+			pstm.setString(2, dto.getMypw());
+			pstm.setString(3, dto.getMyname());
+			pstm.setString(4, dto.getMyaddr());
+			pstm.setString(5, dto.getMyphone());
+			pstm.setString(6, dto.getMyemail());
+			pstm.setInt(7, dto.getMyno());
+			
+			res = pstm.executeUpdate();
+			
+			if(res > 0) {
+				
+				System.out.println("수정 성공");
+				commit(con);
+				
+			}else {
+				
+				System.out.println("수정 실패");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
+		
+	}
+	
+	
+	
 
 	// 5. 회원 탈퇴
+	public int withdraw(int myno) {
+		
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		String sql = " UPDATE MYMEMBER SET MYENABLED = 'N' WHERE MYNO = ? ";	
+		
+		System.out.println("어디문제1");
+		
+		try {
+			pstm= con.prepareStatement(sql);
+			pstm.setInt(1, myno);
+			
+			res = pstm.executeUpdate();
+			
+			if(res > 0) {
+				
+				System.out.println("수정 성공");
+				commit(con);
+				
+			}else {
+				
+				System.out.println("수정 실패");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
+			
+	}
+	
 
 }

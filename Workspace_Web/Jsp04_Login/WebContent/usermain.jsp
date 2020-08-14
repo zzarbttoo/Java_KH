@@ -16,6 +16,8 @@
 <%
 	MYDto dto = (MYDto) session.getAttribute("login");
 
+	System.out.println("dhodhod");
+	System.out.println(dto.getMyid());
 %>
 
 	<h1>USER MAIN</h1>

@@ -30,7 +30,17 @@ public class MYDto {
 		this.myrole = myrole;
 	}
 	
-	
+
+	public MYDto(int myno,String myid, String mypw, String myname, String myaddr, String myphone, String myemail) {
+		this.myno = myno;
+		this.myid = myid;
+		this.mypw = mypw;
+		this.myname = myname;
+		this.myaddr = myaddr;
+		this.myphone = myphone;
+		this.myemail = myemail;
+	}
+
 	
 	public MYDto(String myid, String mypw, String myname, String myaddr, String myphone, String myemail) {
 		this.myid = myid;
