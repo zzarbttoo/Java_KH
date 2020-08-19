@@ -30,7 +30,19 @@ public class AnswerDto {
 		this.regdate = regdate;
 	}
 
-
+	public AnswerDto(int boardno, String title, String content) {
+		this.boardno = boardno;
+		this.title = title;
+		this.content = content;
+		
+	}
+	
+	public AnswerDto(String title, String content, String writer) {
+		
+		this.title= title;
+		this.content =content;
+		this.writer = writer;
+	}
 
 	public int getBoardno() {
 		return boardno;

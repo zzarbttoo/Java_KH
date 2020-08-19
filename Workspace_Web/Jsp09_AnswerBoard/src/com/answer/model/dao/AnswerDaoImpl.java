@@ -62,6 +62,7 @@ public class AnswerDaoImpl implements AnswerDao {
 
 		try {
 			pstm = con.prepareStatement(SELECT_ONE_SQL);
+			pstm.setInt(1, boardno);
 			rs = pstm.executeQuery();
 
 			while (rs.next()) {
@@ -76,6 +77,8 @@ public class AnswerDaoImpl implements AnswerDao {
 				dto.setWriter(rs.getString(7));
 				dto.setRegdate(rs.getDate(8));
 
+				System.out.println("Debug2");
+				System.out.println(dto.getContent());
 			}
 
 		} catch (SQLException e) {
@@ -98,7 +101,9 @@ public class AnswerDaoImpl implements AnswerDao {
 
 		try {
 			pstm = con.prepareStatement(sql);
-			// need to do add
+			pstm.setString(1, dto.getTitle());
+			pstm.setString(2, dto.getContent());
+			pstm.setInt(3, dto.getBoardno());
 
 			res = pstm.executeUpdate();
 
@@ -126,9 +131,15 @@ public class AnswerDaoImpl implements AnswerDao {
 
 		try {
 			pstm = con.prepareStatement(sql);
-			// need to do add
+			pstm.setString(1, dto.getTitle());
+			pstm.setString(2, dto.getContent());
+			pstm.setString(3, dto.getWriter());
 
 			res = pstm.executeUpdate();
+			System.out.println("DEBUG3");
+			System.out.println(dto.getTitle());
+			System.out.println(dto.getContent());
+			System.out.println(dto.getWriter());
 
 			if (res > 0) {
 
@@ -155,7 +166,7 @@ public class AnswerDaoImpl implements AnswerDao {
 
 		try {
 			pstm = con.prepareStatement(sql);
-			// need to do add
+			pstm.setInt(1, boardno);
 
 			res = pstm.executeUpdate();
 

@@ -51,7 +51,7 @@
 		</c:choose>
 		<tr>
 			<td colspan ="4" align = "right"> 
-				<input type ="button" value = "글작성" onclick = ""/>
+				<input type ="button" value = "글작성" onclick = "location.href='answer.do?command=insert'"/>
 			</td>
 		</tr>
 	</table>

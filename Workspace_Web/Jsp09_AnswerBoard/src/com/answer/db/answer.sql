@@ -24,9 +24,7 @@ VALUES(BOARDNOSEQ.NEXTVAL, GROUPNOSEQ.NEXTVAL, 1, 0,
 '첫번째 글 입니다' , '첫번째 글 내용', '관리자', SYSDATE);
 
 --2번 글 작성
-INSERT INTO ANSWERBOARD
-VALUES(BOARDNOSEQ.NEXTVAL, GROUPNOSEQ.NEXTVAL, 1, 0, '두번째 글 입니다'
-, '두번째 글 내용', '이동헌', SYSDATE);
+INSERT INTO ANSWERBOARD VALUES(BOARDNOSEQ.NEXTVAL, GROUPNOSEQ.NEXTVAL, 1, 0, '두번째 글 입니다', '두번째 글 내용', '이동헌', SYSDATE);
 
 --1번 글에 답변 달기
 --지금 내가 답변 달려고 하는 그룹 번호와 값이 같아야한다(부모글과 같은 번호이면서)

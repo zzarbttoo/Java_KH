@@ -44,10 +44,91 @@ public class AnswerController extends HttpServlet {
 
 				int boardno = Integer.parseInt(request.getParameter("boardno"));
 				AnswerDto dto = biz.selectOne(boardno);
+				
+				System.out.println("DEBUG1");
+				System.out.println(dto.getContent());
 
 				request.setAttribute("dto", dto);
+				dispatch("detail.jsp", request, response);
 
+			}else if(command.equals("update")) {
+				
+				int boardno = Integer.parseInt(request.getParameter("boardno"));
+				AnswerDto dto = biz.selectOne(boardno);
+				
+				System.out.println("DEBUG1");
+				System.out.println(dto.getContent());
+
+				request.setAttribute("dto", dto);
+				dispatch("updateres.jsp", request, response);
+			
+				
+			}else if(command.equals("updateres")) {
+				
+				int boardno = Integer.parseInt(request.getParameter("boardno"));
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				
+				AnswerDto dto = new AnswerDto(boardno, title, content);
+				
+				int res  = biz.update(dto);
+				
+				if(res > 0) {
+					
+					System.out.println("수정 성공");
+					response.sendRedirect("answer.do?command=list");
+				}else {
+					
+					System.out.println("수정실패");
+					response.sendRedirect("answer.do?command=list");
+				}
+				
+			}else if(command.equals("insert")) {
+				
+				response.sendRedirect("insertres.jsp");
+			}else if(command.equals("insertres")) {
+					
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				String writer = request.getParameter("writer");
+				
+				
+				AnswerDto dto = new AnswerDto(title, content, writer);
+				System.out.println(dto);
+				System.out.println(dto.getTitle());
+				System.out.println(dto.getContent());
+				System.out.println(dto.getWriter());
+				int res = biz.insert(dto);
+				
+				if(res > 0) {
+					
+					System.out.println("삽입 성공");
+					response.sendRedirect("answer.do?command=list");
+					
+				}else {
+					
+					System.out.println("삽입 실패");
+					response.sendRedirect("answer.do?command=list");
+				}
+				
+			}else if(command.equals("delete")) {
+				
+				int boardno = Integer.parseInt(request.getParameter("boardno"));
+				
+				int res = biz.delete(boardno);
+				if(res > 0) {
+					System.out.println("성공");
+					response.sendRedirect("answer.do?command=list");
+					
+				}else{
+						System.out.println("실패");
+					response.sendRedirect("answer.do?command=list");
+					
+					
+				}
+				
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", e);
