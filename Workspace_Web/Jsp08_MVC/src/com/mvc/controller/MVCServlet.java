@@ -19,10 +19,6 @@ import com.mvc.model.dto.MVCBoardDto;
 public class MVCServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public MVCServlet() {
-		// TODO Auto-generated constructor stub
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -93,7 +89,6 @@ public class MVCServlet extends HttpServlet {
 
 			int res = biz.insert(new MVCBoardDto(writer, title, content));
 
-			System.out.println("여기 되는거 맞냐냐냐");
 			System.out.println(res);
 			if (res > 0) {
 				// f5(새로고침) 누르면 다시 계속 저장되는 코드

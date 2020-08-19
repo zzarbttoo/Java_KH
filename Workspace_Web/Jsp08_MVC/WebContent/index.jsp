@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
-<% response.setContentType("text/html; charset=UTF-8"); %>
-    
+	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	response.setContentType("text/html; charset=UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +15,24 @@
 </head>
 <body>
 
-	<a href = "mvccontroller.do?command=list">list...</a>
-	
+	<form action="" method="post">
+		<table border="1">
+			<tr>
+				<th>아이디</th>
+				<td><input type="text" name="id" /></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="text" name="password" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button />
+
+				</td>
+			</tr>
+		</table>
+	</form>
 
 
 </body>
