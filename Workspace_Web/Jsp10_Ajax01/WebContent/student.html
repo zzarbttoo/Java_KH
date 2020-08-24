@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+	function getParameterValues() {
+		// parameter 값을 함수로 만들어준다
+		var name = "?name=" + encodeURIComponent($("#name").val());
+		var kor = "&kor=" + $("#kor").val();
+		var eng = "&eng=" + $("#eng").val();
+		var math = "&math=" + $("#math").val();
+
+		return name + kor + eng + math;
+	}
+	
+	$(function(){
+		
+		//process 버튼 클릭 시 
+		$("#process").click(function(){
+			
+			
+			$.ajax({
+				
+				//request가 보내질 주소
+				
+				//cal.do?name="name"&...
+				url : "cal.do" + getParameterValues(),
+				dataType : "json",
+				//request 성공 하면
+				//msg 는 서버에서 온 값
+				success : function(msg){
+					
+				//encodeURIComponent 방식으로 생성된 URI 컴포넌트 해독
+					$("#result").html(decodeURIComponent(msg.name)+ "의 총점은" + msg.sum + "이고 평균은" + msg.avg + "입니다.");
+					
+				},
+				error:function(){
+					
+					alert("통신 실패...");
+					
+				}
+				
+			})
+		}); 
+		
+	});
+	
+	/*
+		<한글 사용 인코딩>
+		encodeURI() : 주소줄에서 사용되는 특수문자는 제외하고 인코딩
+		encodeURIComponent() : 모든 문자 인코딩
+		
+		
+	
+	
+	*/
+</script>
+
+</head>
+<body>
+
+	<h1>성적 처리 프로그램</h1>
+
+	이름 :
+	<input type="text" id="name" />
+	<br /> 국어 :
+	<input type="text" id="kor" />
+	<br /> 영어 :
+	<input type="text" id="eng" />
+	<br /> 수학 :
+	<input type="text" id="math" />
+	<br />
+	<input type="button" id="process" value="성적처리" />
+	<br />
+
+	<div id="result"></div>
+
+
+</body>
+</html>
