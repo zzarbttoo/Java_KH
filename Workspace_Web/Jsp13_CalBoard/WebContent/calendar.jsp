@@ -39,18 +39,17 @@ a {
 	background-color: skyblue;
 }
 
-.cPreview{
-	position:absolute;
-	top : -30px;
-	left : 10px;
-	background-color : skyblue;
-	width : 40px;
-	height : 40px;
-	text-align : center;
+.cPreview {
+	position: absolute;
+	top: -30px;
+	left: 10px;
+	background-color: skyblue;
+	width: 40px;
+	height: 40px;
+	text-align: center;
 	line-height: 40px;
-	border-radius : 40px 40px 40px 1px;
+	border-radius: 40px 40px 40px 1px;
 }
-
 </style>
 
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
