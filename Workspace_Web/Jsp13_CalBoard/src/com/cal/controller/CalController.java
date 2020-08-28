@@ -1,6 +1,7 @@
 package com.cal.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -64,6 +65,24 @@ public class CalController extends HttpServlet {
 				
 			}
 		
+		}else if(command.equals("list")) {
+			
+			String year= request.getParameter("year");
+			String month = request.getParameter("month");
+			String date = request.getParameter("date");
+			String yyyyMMdd = year+ Util.isTwo(month) + Util.isTwo(date);
+			
+			System.out.println("year뜨냐" + year);
+			System.out.println("year뜨냐" + month);
+			System.out.println("year뜨냐" + date);
+			System.out.println("year뜨냐" + yyyyMMdd);
+			
+			List<CalDto> list = dao.selectCalendarList(yyyyMMdd, "kh");
+			
+			request.setAttribute("list", list);
+			dispatch("listcalboard.jsp", request, response);
+			
+			
 		}
 		
 		
