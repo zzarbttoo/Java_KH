@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.multi.mdboard">
+
+	<resultMap type="MDBoardDto" id="MDBoardDtoMap">
+
+		<result property="seq" column="SEQ" />
+		<result property="writer" column="WRITER" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regdate" column="REGDATE" />
+	</resultMap>
+
+
+	<select id="selectList" resultMap="MDBoardDtoMap">
+		SELECT SEQ, WRITER, TITLE, CONTENT, REGDATE
+		FROM MDBOARD
+	</select>
+	<delete id="muldel" parameterType="map">
+		DELETE FROM MDBOARD
+		WHERE SEQ IN
+		<foreach collection="seqs" item="seq" open="(" separator=","
+			close=")">
+			#{seq}
+		</foreach>
+
+	</delete>
+
+</mapper>

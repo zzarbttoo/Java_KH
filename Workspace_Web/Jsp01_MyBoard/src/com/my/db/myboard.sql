@@ -13,7 +13,7 @@ CREATE TABLE MYBOARD(
 );
 
 INSERT INTO MYBOARD
-VALUES (MYSEQ.NEXTVAL, '관리자' , '오늘도 테스트' , '테스트글 입니다', SYSDATE);
+VALUES (MYSEQ.NEXTVAL, '愿�由ъ옄' , '�삤�뒛�룄 �뀒�뒪�듃' , '�뀒�뒪�듃湲� �엯�땲�떎', SYSDATE);
 
 SELECT MYNO, MYNAME, MYCONTENT, MYDATE
 FROM MYBOARD;

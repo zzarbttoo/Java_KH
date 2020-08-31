@@ -22,7 +22,7 @@
 		MyBoardDto dto = new MyBoardDto();
 	MyBoardDao dao = new MyBoardDao();
 
-	List<MyBoardDto> list = dao.select();
+	List<MyBoardDto> list = dao.selectList();
 	System.out.println(list.size());
 	%>
 
