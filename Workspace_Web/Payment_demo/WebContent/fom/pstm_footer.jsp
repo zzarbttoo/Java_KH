@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
-<% response.setContentType("text/html; charset=UTF-8"); %>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	
-	<a href= "payment.jsp">결제하러 이동</a>
 
 </body>
 </html>

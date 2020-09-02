@@ -25,7 +25,9 @@
 	
 	<a href= "payment.jsp">결제하러 이동</a>
 	<a href= "callender.jsp">달력</a>
-
+	<a href="chatbotdemo.jsp">챗봇</a>
+	
+	<a href= "pstm_subscription.jsp">신청하기</a>
 
 
 
