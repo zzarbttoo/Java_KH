@@ -7,19 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
+<%@ include file = "./form/pstm_header.jsp" %>
+
+<%
+	//이미지, 이름, 위치, 한마디 각오 
 	String[][] list ={{"img0","name", "age","where"}, {"img1", "배유진", "헬창", "어디삼"}, {"img2", "그러니", "어디가", "집에가"}, {"img3", "왜그러니", "siasa", "hoh,o"}};
 %>
+	<div id = "pstm_subscription_wrapper">
+		<div class="pstm_subscription_title"></div>
+		<div class="pstm_subscription_list"></div>
 	
+	</div>
 	
-	
-	<h2>강사 소개</h2>
-
-<%		for(int i = 0; i < list.length; i++){ %>
-	
-			<a href = "#">아아아</a><br/>
-<%} %>
 
 </body>
 </html>
