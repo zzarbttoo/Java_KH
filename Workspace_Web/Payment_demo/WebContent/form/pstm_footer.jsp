@@ -83,14 +83,14 @@
 						<td style ="width:70% text-align : left" >	
 							<p class="copyright">
 								<br>
-								사업장소재지 (주)코다차야 서울시 역삼역 |사업자 번호:111-1111-111 |
+								사업장소재지 (주)코더차야 서울시 역삼역 |사업자 번호:111-1111-111 |
 								대표이사 kh정보교육원 
 								<br>
 								<a href = "#">통합약관 </a>|
 								<a href ="#">이용약관 </a>|
 								<a href ="#">개인정보 처리 방침</a>
 								<br>
-								Copyright © CodaChaya, Inc. All Rights Reserved.
+								Copyright © CoderChaya, Inc. All Rights Reserved.
 							</p>
 						</td>
 					</tr>

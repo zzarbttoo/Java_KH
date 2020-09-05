@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%@ include file = "./form/pstm_header.jsp" %>
+		
+	
+	
+	<%@ include file = "./form/pstm_footer.jsp" %>
 </body>
 </html>

@@ -28,6 +28,8 @@
 	<a href="chatbotdemo.jsp">챗봇</a>
 	
 	<a href= "pstm_subscription.jsp">신청하기</a>
+	
+	<a href ="pay.do?command=testtemp">테스트 서블릿</a>
 
 
 
