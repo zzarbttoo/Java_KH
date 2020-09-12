@@ -1,4 +1,4 @@
-package com.pstm.paging;
+package com.pstm.controller;
 
 import java.io.IOException;
 

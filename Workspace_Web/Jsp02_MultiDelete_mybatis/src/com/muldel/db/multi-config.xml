@@ -21,6 +21,6 @@
 
 	<mappers>
 		<mapper resource="com/muldel/db/multi-mapper.xml" />
-	</mappers>
+		</mappers>
 
 </configuration>
