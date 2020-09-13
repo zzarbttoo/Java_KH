@@ -7,8 +7,8 @@
 
 		 <![CDATA[ 
 			SELECT RN, NAME FROM (SELECT SEQ, RN, NAME FROM (SELECT ROWNUM 
-			AS SEQ, RN, NAME FROM (SELECT * FROM TEST ORDER BY RN DESC) ) WHERE SEQ >= (5-5)*3 )
-			WHERE ROWNUM <= 3 ]]>
+			AS SEQ, RN, NAME FROM (SELECT * FROM TEST ORDER BY RN DESC) ) WHERE SEQ >= #{offset} )
+			WHERE ROWNUM <= #{count} ]]>
 	</select>
 
 	<select id="selectTotalRecords" resultType = "int">

@@ -25,6 +25,8 @@ public class PagingTServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("서블릿 도착함");
+		
 		int currentPageNo = 1;
 		int recordPerPage = 3;
 		
@@ -32,6 +34,8 @@ public class PagingTServlet extends HttpServlet {
 		//PagingTestBiz pagingbiz = new PagingTestBiz();
 		
 		PagingTestDao pagingdao = new PagingTestDao();
+		
+		System.out.println(request.getParameter("pages"));
 		
 		if(request.getParameter("pages") != null) {
 			currentPageNo = Integer.parseInt(request.getParameter("pages"));
