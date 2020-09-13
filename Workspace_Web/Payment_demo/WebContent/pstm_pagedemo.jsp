@@ -35,7 +35,7 @@
 	
 	<%} %>
 	
-	<% for(int i = paging.getStartPageNo(); i < paging.getEndPageNo(); i++) { %>
+	<% for(int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) { %>
 	
 		<% if( i == paging.getCurrentPageNo()){ %>
 		<b><a href = "PagingTServlet?pages=<%=i%>&lines=3"><%=i%></a></b>

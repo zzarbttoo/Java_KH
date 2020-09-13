@@ -26,8 +26,8 @@ public class PagingTestDao extends PagingMapConfig{
 		parameters.put("count", count);
 		
 		try {
-			//list = session.selectList("pagingmapper.selectTestPaging", parameters);
-			list = session.selectList("pagingmapper.selectTestPaging");
+			list = session.selectList("pagingmapper.selectTestPaging", parameters);
+			//list = session.selectList("pagingmapper.selectTestPaging");
 			System.out.println(" 값 도착");
 			
 		} catch (Exception e) {
