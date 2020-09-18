@@ -21,7 +21,7 @@ public class PagingTest {
 		
 		this.currentPageNo = currentPageNo;
 		this.sizeOfPage = 10;
-		this.recordsPerPage = (recordsPerPage != 0) ? recordsPerPage : 10;
+		this.recordsPerPage = (recordsPerPage != 0) ? recordsPerPage : 5;
 		
 	}
 	

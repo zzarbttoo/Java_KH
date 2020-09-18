@@ -9,6 +9,7 @@
 <style type="text/css">
 .wrapper {
 	width: 1100px;
+	text-align : center;
 }
 
 .chatbot {
