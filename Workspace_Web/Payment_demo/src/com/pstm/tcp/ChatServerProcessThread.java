@@ -45,9 +45,7 @@ public class ChatServerProcessThread extends Thread{
 				else if("quit".equals(tokens[0])) {
 					doQuit(printWriter);
 				}
-//				else {
-//					consoleLog("에러: 알수 없는 요청 (" + tokens[0] + ")");
-//				}
+//				
 			}
 		}
 		catch(IOException e) {

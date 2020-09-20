@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
@@ -44,20 +43,24 @@ public class ChatWindow {
 		new ChatClientReceiveThread(socket).start();
 	}
 
+	//버튼이 눌러진다면 sendMessage 함수가 작동
 	public void show() {
 		// Button
 		buttonSend.setBackground(Color.GRAY);
 		buttonSend.setForeground(Color.WHITE);
 		buttonSend.addActionListener( new ActionListener() {
 			@Override
-			public void actionPerformed( ActionEvent actionEvent ) {
+			public void actionPerformed(ActionEvent actionEvent ) {
 				sendMessage();
 			}
 		});
 		
 
-		// Textfield
+		// Textfield 
+		//최대 입력 갯수는 80자
 		textField.setColumns(80);
+		//키보드를 누를 때 실행됨(addKeyListener)
+		//enter을 눌러도 sendMessage 실행
 		textField.addKeyListener( new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
 				char keyCode = e.getKeyChar();
@@ -67,18 +70,20 @@ public class ChatWindow {
 			}
 		});
 
-		// Pannel
+		// Pannel <-css인거 같다 (패널레이아웃)
 		pannel.setBackground(Color.LIGHT_GRAY);
 		pannel.add(textField);
 		pannel.add(buttonSend);
 		frame.add(BorderLayout.SOUTH, pannel);
 
-		// TextArea
+		// TextArea <-input text로 대체
 		textArea.setEditable(false);
 		frame.add(BorderLayout.CENTER, textArea);
 
-		// Frame
+		//화면의 동작에 대해 하는 것이다
 		frame.addWindowListener(new WindowAdapter() {
+	
+			//만약 x버튼 리스너 or 그냥 창 꺼버리는 리스너
 			public void windowClosing(WindowEvent e) {
 				PrintWriter pw;
 				try {
@@ -100,12 +105,19 @@ public class ChatWindow {
 	private void sendMessage() {
 		PrintWriter pw;
 		try {
+			//그 socket을 받아서, 새로운 printwriter을 만든다/autoflush
 			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
+			
+			//input text의 값을 받아온다
 			String message = textField.getText();
+			
+			//그 값을 printerwriter에 추가한다
 			String request = "message:" + message + "\r\n";
 			pw.println(request);
-
+			
+			
 			textField.setText("");
+			//포커스를 통해 먼저 여기 키를 입력받는다고 한다..(하지만 자바스크립트에서 필요한지는 의문)
 			textField.requestFocus();
 		}
 		catch (IOException e) {
