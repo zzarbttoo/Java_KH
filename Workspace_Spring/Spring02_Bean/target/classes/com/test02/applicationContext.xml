@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 이순신, 서울시 강남구, 010- 1111- 1111 -->
+<!-- class 는 . 이다 -->
+	<bean id = "lee" class = "com.test02.Address">
+		<constructor-arg index = "0" value = "이순신"/>
+		<constructor-arg index = "1" value ="서울시 강남구"/>
+		<constructor-arg index = "2" value = "010-1111-1111"/>
+	</bean>
+	
+<!-- 홍길동, 경기도 수원시, 010- 2222- 2222 -->
+	<bean id = "hong" class ="com.test02.Address">
+		<constructor-arg><value>홍길동</value></constructor-arg>
+		<constructor-arg value= "경기도 수원시"></constructor-arg>
+		<constructor-arg value = "010-2222-2222"></constructor-arg>
+	</bean>
+</beans>

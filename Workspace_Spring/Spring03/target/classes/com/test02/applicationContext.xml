@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 1. 이순신, 20000000 (setter 주입으로 bean 생성) -->
+<bean id = "lee" class = "com.test02.Emp">
+	<property name = "name" value = "이순신"></property>
+	<property name = "salary" value = "2000000"></property>
+</bean>
+
+<!-- 1. 홍길동, 2500000(constructor 주입으로 bean 생성) -->
+<bean id = "hong" class = "com.test02.Emp">
+	<constructor-arg value = "홍길동"/>
+	<constructor-arg value = "2500000"/>
+</bean>
+
+</beans>

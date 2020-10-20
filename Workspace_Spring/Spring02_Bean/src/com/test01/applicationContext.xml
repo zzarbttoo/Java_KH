@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- MessageBeanImpl strawberry = new MessageBeanImpl(); -->
+	<bean id="strawberry" class="com.test01.MessageBeanImpl"></bean>
+
+	<!-- MessageBeanImple orange = new MessageImple("orange", 15000) -->
+	<bean id="orange" class="com.test01.MessageBeanImpl">
+		<constructor-arg>
+			<value>orange</value>
+		</constructor-arg>
+		<constructor-arg value="15000">
+		</constructor-arg>
+	</bean>
+	
+	<!-- 
+	MessageBeanImple banana = new MessageBeanImpl("banana", 8000);
+	 -->
+	 
+	<bean id = "banana" class= "com.test01.MessageBeanImpl">
+		<constructor-arg index = "1" value = "8000"></constructor-arg>
+		<constructor-arg index = "0" value = "banana"></constructor-arg>
+	</bean>
+</beans>
