@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myclass" class="com.test01.MyClass" />
+
+	<bean id="date" class="java.util.Calendar"
+		factory-method="getInstance"></bean>
+
+	<bean id="tDate" class="java.util.Date"></bean>
+	<bean id="christmas" class="java.util.Date">
+		<property name="year" value="120"></property>
+		<property name="month" value="11"></property>
+		<property name="date" value="25"></property>
+	</bean>
+
+
+	<bean id="beanTest" class="com.test01.BeanTest">
+		<!-- 1. public BeanTest(MyClass myClass) 호출 -->
+		<constructor-arg ref="myclass" />
+		<property name="myClass" ref="myclass" />
+		<property name="date" ref="tDate" />
+
+		<!-- 타입 지정을 해줄 수 있다. 묵시적 형변환으로 변환 가능 -->
+		<property name="number">
+			<value type="short">3</value>
+		</property>
+
+		<!-- 홍길동, 이순신, 김선달 -->
+		<property name="array">
+			<array>
+				<value>홍길동</value>
+				<value>이순신</value>
+				<value>김선달</value>
+			</array>
+		</property>
+
+		<property name="list">
+			<list>
+				<value>봄</value>
+				<value>여름</value>
+				<value>가을</value>
+				<value>겨울</value>
+			</list>
+		</property>
+
+		<property name="set">
+			<set>
+				<value>1</value>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+			</set>
+		</property>
+
+		<property name="map">
+			<map>
+				<entry>
+					<key>
+						<value>1</value>
+					</key>
+					<value>봄</value>
+				</entry>
+				<entry key="2" value="여름" />
+				<entry key="3" value="가을" />
+				<entry key="4" value="겨울" />
+			</map>
+		</property>
+
+		<property name="score">
+			<list>
+				<bean class="com.test01.Score">
+					<constructor-arg value="홍길동"></constructor-arg>
+					<constructor-arg value="100"></constructor-arg>
+					<constructor-arg value="50"></constructor-arg>
+					<constructor-arg value="67"></constructor-arg>
+				</bean>
+				
+				<!-- lee라는 bean을 reference(참조) 할 것이다 -->
+				<ref bean = "lee"></ref>
+			</list>
+		</property>
+
+
+	</bean>
+
+	<bean id="lee" class="com.test01.Score">
+		<property name="name" value="이순신"></property>
+		<property name="kor" value="100"></property>
+		<property name="eng" value="10"></property>
+		<property name="math" value="100"></property>
+
+	</bean>
+</beans>

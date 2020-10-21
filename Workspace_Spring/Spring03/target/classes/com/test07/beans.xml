@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- lazy-init을 걸어주니 생성이 늦게 된다 -->
+	<bean id = "samsong" class ="com.test07.SamsongTV" lazy-init= "true"></bean>
+	<bean id = "ig" class = "com.test07.IgTV" lazy-init="true"></bean>
+
+</beans>
