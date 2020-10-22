@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id = "favoriteFood" name = "favoriteFood" class ="com.test03.Food">
+		<property name = "name" value=  "회"></property>
+		<property name = "price" value = "20000"></property>
+	</bean>
+	
+	<bean id ="unFavorite" name = "unFavorite" class ="com.test03.Food">
+		<constructor-arg value="해물찜"></constructor-arg>
+		<constructor-arg value = "25000"></constructor-arg>
+	</bean>
+	
+	<!--  
+	<bean id = "myFood" class = "com.test03.MyFood">
+		<property name = "favoriteFood" ref = "favoriteFood"></property>
+		<property name = "unFavoriteFood" ref = "unFavorite"/>
+	</bean>
+	-->
+
+	<!-- autowire :  construction 넣으면 둘다 null 나온다-->
+	<!-- byname, unfavorite 하면 unfavorite 안나오고, 아니면 둘다 나온다 -->
+	<!-- byType은 에러가 난다 -->
+	
+	<!-- 
+		autowire 속성값
+		1. byName : setter와 같은 이름의 bean 이 있으면 자동 할당 
+		2. byType : setter의 parameter type과 같은 type의 bean 있으면 자동할당
+		3. constructor : 생성자의 parameter 와 같은 type 의 bean 이 있으면 자동 할당(id or name으로 호출)
+		4. default : 생성자에 할당할 type이 있는지 확인 후(constuctor) -> 없으면 메서드에서 type이 있는지 확인하여 할당(byType)
+		
+	 -->
+	<bean id = "myFood" class ="com.test03.MyFood" autowire ="default"></bean>
+
+</beans>
