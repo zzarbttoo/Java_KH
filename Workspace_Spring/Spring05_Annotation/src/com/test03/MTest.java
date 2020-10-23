@@ -11,6 +11,9 @@ public static void main(String[] args) {
 	igTV.powerOn();
 	
 	TV samsong = (TV) factory.getBean("samsong");
+	TV samsongzzap = (TV) factory.getBean("samsong", SamsongTV.class);
+	
 	samsong.powerOn();
+	samsongzzap.volumeDown();
 }
 }

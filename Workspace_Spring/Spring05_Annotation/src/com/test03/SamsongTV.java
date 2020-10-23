@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("samsong")
+//@Component
 public class SamsongTV implements TV {
 
 	@Override
