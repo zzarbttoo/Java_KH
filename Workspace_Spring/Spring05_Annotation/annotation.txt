@@ -16,7 +16,7 @@ Spring framework 에서 annotation 을 사용하려면 다음과 같은 설정�
 4.	<mvc:annotation-driven/>
 	@RequestMapping, @Valid 등 Spring mvc component를 자동 처리
 	HandlerMapping, HandlerAdapter등을 등록하여 @Controller에 요청 연결
-	*해당 설정이 없어도 component-scan이 있으면 mvc application 동작 가능
+	* 해당 설정이 없어도 component-scan이 있으면 mvc application 동작 가능
 	
 Spring(WEB) mvc framework는 java 1.5부터 annotation을 제공하며
 annotation의 사용으로 설정 파일을 간결화하고,
