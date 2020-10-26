@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--  cc :  핵심 관심사항 -->
+	<bean id = "woman" class = "com.test02.Woman"/>
+	<bean id = "man" class = "com.test02.Man"/>
+	
+	<!-- ccc: 공통 관심사항 -->
+	<bean id = "myAdvice" class = "com.test02.MyAspect"/>
+	
+	<!-- proxy 객체 생성 -->
+	<bean class = "org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+	
+	<!-- advisor(aspect) :advice + pointcut -->
+	<bean id = "myAdvisor" class = "org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+		<property name = "advice" ref = "myAdvice"/>
+		<property name = "expression" value = "execution(public void com.test02.Woman.classWork())"/>
+		<!--execution(public * *(..))-->
+	</bean>
+	
+	
+</beans>
