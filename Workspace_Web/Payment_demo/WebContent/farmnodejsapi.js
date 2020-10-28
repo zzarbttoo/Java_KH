@@ -90,8 +90,8 @@ request({
 app.post('/aaa', function(req, res){
 
     res.send(chickenwhere);
-    res.send(cowwhere);
-    res.send(pigwhere);
+    //res.send(cowwhere);
+    //res.send(pigwhere);
 });
 
 
