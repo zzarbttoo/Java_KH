@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- db.properties -->
+	<!-- property를 읽어서 해당 configuration 안에서 이용할 수 있게 해주는 것 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:mybatis/db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- dataSource -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+
+
+	<!--mybatis factory -->
+	<!-- sqlSession 객체를 만든다 원래는 openSession객체를 이용했었다 -->
+	<bean id = "sqlSession" class = "org.mybatis.spring.SqlSessionFactoryBean">
+		<property name = "dataSource" ref = "dataSource"/>
+		<property name = "configLocation" value = "WEB-INF/spring/sqls/config.xml"/>
+	</bean>
+
+	<!-- mybatis templates -->
+	<!-- open, close 등을 자동으로 해준다 -->
+	<bean id= "sqlSessionTemplate" class = "org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref = "sqlSession"/>
+	</bean>
+	
+
+
+</beans>
