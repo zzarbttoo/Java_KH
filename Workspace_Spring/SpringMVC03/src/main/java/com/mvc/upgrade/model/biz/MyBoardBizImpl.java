@@ -21,26 +21,22 @@ public class MyBoardBizImpl implements MyBoardBiz {
 
 	@Override
 	public MyBoardDto selectOne(int myno) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOne(myno);
 	}
 
 	@Override
 	public int insert(MyBoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(dto);
 	}
 
 	@Override
 	public int update(MyBoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int myno) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(myno);
 	}
 
 	

@@ -27,26 +27,48 @@ public class MyBoardDaoImpl implements MyBoardDao {
 
 	@Override
 	public MyBoardDto selectOne(int myno) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MyBoardDto selectDto = new MyBoardDto();
+		
+		try {
+			selectDto = sqlSession.selectOne(NAMESPACE + "selectOne", myno);
+		} catch (Exception e) {
+			System.out.println("[ERROR] selectOne");
+			e.printStackTrace();
+		}
+		System.out.println(selectDto);
+		return selectDto;
 	}
 
+	
+	//날짜 처리 해주자
 	@Override
 	public int insert(MyBoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			System.out.println("[Error] insert");
+		}
+		
+		return res;
 	}
+	
 
 	@Override
 	public int update(MyBoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int resultNum = sqlSession.update(NAMESPACE + "update", dto);
+				
+		return resultNum;
 	}
 
 	@Override
 	public int delete(int myno) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int resultNum = sqlSession.delete(NAMESPACE + "delete", myno);
+		return resultNum;
 	}
 
 	

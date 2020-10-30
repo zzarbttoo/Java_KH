@@ -2,14 +2,41 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="myboard"	>
+<mapper namespace="myboard">
+
+	<resultMap type ="myBoardDto" id = "myBoardMap">
+		<result property ="myno" column = "MYNO"/>
+		<result property = "myname" column = "MYNAME"/>
+		<result property = "mytitle" column = "MYTITLE"/>
+		<result property = "mycontent" column = "MYCONTENT"/>
+		<result property = "mydate" column = "MYDATE"/>
 	
-	<select id = "selectList" resultType = "myboardDto">
-		SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE
-		FROM MYBOARD
+	</resultMap>
+
+	<select id="selectList" resultType="myBoardDto">
+		SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE FROM MYBOARD
 		ORDER BY MYNO DESC
 	</select>
-	
-	
-  
+
+	<select id="selectOne" resultMap="myBoardMap"
+		parameterType="int">
+		SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE
+		FROM MYBOARD WHERE MYNO = #{myno}
+	</select>
+
+	<update id="update" parameterType="myBoardDto">
+		UPDATE MYBOARD SET
+		MYTITLE = #{mytitle}, MYCONTENT = #{mycontent}
+		WHERE MYNO = #{myno}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM MYBOARD WHERE MYNO=#{myno}
+	</delete>
+
+	<insert id="insert" parameterType="myBoardDto">
+		INSERT INTO MYBOARD
+		VALUES (MYNOSEQ.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)
+	</insert>
+
 </mapper>
