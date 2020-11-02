@@ -1,6 +1,5 @@
 package com.mvc.upgrade.model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,66 +10,67 @@ import com.mvc.upgrade.model.dto.MyBoardDto;
 
 @Repository
 public class MyBoardDaoImpl implements MyBoardDao {
-
+	
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	public SqlSessionTemplate sqlSession;
+
 	
 	@Override
 	public List<MyBoardDto> selectList() {
 		
-		List<MyBoardDto> list = new ArrayList<MyBoardDto>();
-		
-		list = sqlSession.selectList(NAMESPACE + "selectList");
-		
-		return list;
+		List<MyBoardDto> dtolist = sqlSession.selectList(NAMESPACE + "selectList");
+		System.out.println(dtolist);
+		return dtolist;
 	}
 
 	@Override
 	public MyBoardDto selectOne(int myno) {
 		
-		MyBoardDto selectDto = new MyBoardDto();
+		MyBoardDto dto = sqlSession.selectOne(NAMESPACE + "selectOne" , myno);
 		
-		try {
-			selectDto = sqlSession.selectOne(NAMESPACE + "selectOne", myno);
-		} catch (Exception e) {
-			System.out.println("[ERROR] selectOne");
-			e.printStackTrace();
-		}
-		System.out.println(selectDto);
-		return selectDto;
+		return dto;
 	}
 
-	
-	//날짜 처리 해주자
 	@Override
 	public int insert(MyBoardDto dto) {
-		
 		int res = 0;
 		try {
 			res = sqlSession.insert(NAMESPACE + "insert", dto);
 		} catch (Exception e) {
-			System.out.println("[Error] insert");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int update(MyBoardDto dto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "update", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int delete(int myno) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "delete", myno);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return res;
 	}
 	
-
-	@Override
-	public int update(MyBoardDto dto) {
-		
-		int resultNum = sqlSession.update(NAMESPACE + "update", dto);
-				
-		return resultNum;
-	}
-
-	@Override
-	public int delete(int myno) {
-		
-		int resultNum = sqlSession.delete(NAMESPACE + "delete", myno);
-		return resultNum;
-	}
-
 	
-	
+
 }

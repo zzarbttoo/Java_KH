@@ -27,8 +27,10 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
 			</param-value>
 		</init-param>
+
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
@@ -41,15 +43,16 @@
 		</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
+			<param-vlaue>UTF-8</param-vlaue>
 		</init-param>
 		<init-param>
 			<param-name>forceEncoding</param-name>
 			<param-value>true</param-value>
 		</init-param>
 
-
 	</filter>
+	
+	<!-- 가끔씩 선생님이 이걸 뺴고 쓰면 알아서 써라^^-->
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
