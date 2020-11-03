@@ -1,0 +1,15 @@
+SpringMVC03
+1. pom.xml : ojdb6, mybatis, mybatis-spring, commons-dbcp, spring-orm
+2. web.xml : mapping(*.do), encoding filter
+3. /WEB-INF/spring/sqls/test.sql
+4. dto, dao, biz, controller
+5. src/main/resources/mybatis/db.properties 
+6. src/main/resources/mybatis/board-mapper.xml
+7. /WEB-INF/spring/sqls/config.xml
+8. applicationContext.xml
+
+
+_filter
+9. com.mvc.upgrade.common.filter/LogFilter( impl javax.servlet.Filter)
+10. web.xml : <filter>, <filter-mapping>
+
