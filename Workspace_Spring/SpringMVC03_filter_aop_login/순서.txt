@@ -1,0 +1,29 @@
+  
+SpringMVC03
+1. pom.xml : ojdb6, mybatis, mybatis-spring, commons-dbcp, spring-orm
+2. web.xml : mapping(*.do), encoding filter
+3. /WEB-INF/spring/sqls/test.sql
+4. dto, dao, biz, controller
+5. src/main/resources/mybatis/db.properties 
+6. src/main/resources/mybatis/board-mapper.xml
+7. /WEB-INF/spring/sqls/config.xml
+8. applicationContext.xml
+
+
+_filter
+9. com.mvc.upgrade.common.filter/LogFilter( impl javax.servlet.Filter)
+10. web.xml : <filter>, <filter-mapping>
+
+
+aop
+11. pom.xml : aspectjrt, aspectjweaver
+12. com.mvc.upgrade.common.aop/LogAop
+13. WEB-INF/spring/appServlet/aop-context.xml <- 설정 해줘야함
+14. web.xml : aop-context.xml 
+15. src/main/resources/log4j.xml
+
+_login
+16.pom.xml : jackson-core-asl, jackson-mapper-asl(spring 4.x 이후부턴 depenency 이름 변경)
+17.WEB-INF/spring/sqls/member.sql <- 로그인 정보에 맞는 디비가 필요하다
+18.dto, dao, biz, controller
+19.src/main/resourcs/mybatis/member-mapper.sxml
