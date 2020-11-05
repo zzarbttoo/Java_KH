@@ -41,9 +41,12 @@ public class MyMemberController {
 		MyMemberDto res = biz.login(dto);
 		
 		boolean check = false;
+		
+
 		if(res != null) {
 			System.out.println("왜안뜸");
-			System.out.println(res.getName());
+			System.out.println(res.getMemberid());
+			System.out.println(res.getMemberpw());
 			session.setAttribute("login", res);
 			check = true;
 			
@@ -52,6 +55,25 @@ public class MyMemberController {
 		map.put("check", check);
 		
 		return map;
+	}
+	
+	
+	@RequestMapping("/registform.do")
+	public String registform() {
+		
+		return "myregist";
+	}
+	
+	@RequestMapping("/registres.do")
+	public String registres(MyMemberDto dto) {
+		
+		int res = biz.register(dto);
+		
+		if(res > 0) {
+			
+		return "redirect:loginform.do";
+		}
+		return "redirect:registform.do";
 	}
 	
 }

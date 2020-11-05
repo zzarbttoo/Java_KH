@@ -3,6 +3,7 @@
     
 <%@ taglib  prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 
 <h1>LIST</h1>
 
-<h3>Hello, ${login.name }</h3>
+<h3>Hello, ${login.membername }</h3>
 
 <table border="1">
 <col width = "50">

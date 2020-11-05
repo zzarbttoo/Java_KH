@@ -9,6 +9,11 @@
 		AND MEMBERPW = #{memberpw}
 	</select>
 	
+	<insert id = "register" parameterType = "myMemberDto">
+		INSERT INTO MYMEMBER 
+		VALUES(MEMBERSEQ.NEXTVAL, #{memberid},#{memberpw},#{membername})
+	</insert>
+	
 	
 	
 </mapper>

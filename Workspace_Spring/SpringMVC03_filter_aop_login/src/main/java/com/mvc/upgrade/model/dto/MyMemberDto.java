@@ -5,17 +5,17 @@ public class MyMemberDto {
 	private int memberno;
 	private String memberid;
 	private String memberpw;
-	private String name;
+	private String membername;
 
 	public MyMemberDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MyMemberDto(int memberno, String memberid, String memberpw, String name) {
+	public MyMemberDto(int memberno, String memberid, String memberpw, String membername) {
 		this.memberno = memberno;
 		this.memberid = memberid;
 		this.memberpw = memberpw;
-		this.name = name;
+		this.membername = membername;
 	}
 
 	public int getMemberno() {
@@ -42,12 +42,12 @@ public class MyMemberDto {
 		this.memberpw = memberpw;
 	}
 
-	public String getName() {
-		return name;
+	public String getMembername() {
+		return membername;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMembername(String membername) {
+		this.membername = membername;
 	}
 
 }

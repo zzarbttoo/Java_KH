@@ -19,8 +19,7 @@ public class MyMemberBizImpl implements MyMemberBiz {
 
 	@Override
 	public int register(MyMemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.register(dto);
 	}
 
 }

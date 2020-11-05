@@ -26,14 +26,21 @@ public class MyMemberDaoImpl implements MyMemberDao {
 		}
 			
 		
-		
 		return res;
 	}
 
 	@Override
 	public int register(MyMemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		
+		 try {
+			res = sqlSession.insert(NAMESPACE + "register", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }
