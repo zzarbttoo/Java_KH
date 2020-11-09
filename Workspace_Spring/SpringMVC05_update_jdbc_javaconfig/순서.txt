@@ -1,0 +1,34 @@
+_update
+1. web.xml : 2.5 -> 4.0
+	(new dynamic project module 에서 web module 설정을 4.0으로 생성 -> 복붙)
+
+
+2. pom.xml
+	java-version : 1.6 -> 1.8
+	org.springframework-version : 3.1.1 -> 5.2.9
+	servlet-api : -> javax.servlet-api 4.0.1
+	jsp-api : ->javax.servlet.jsp-api 2.3.3
+	maven-compiler-plugin source / target : 1.6 -> 1.8
+	
+3. project facets
+	dynamic web module : 2.5 -> 4.0
+	java : 1.6 -> 1.8
+	
+4. maven update
+
+_jdbc
+5. pom.xml : spring-jdbc, ojdbc5(datanucleus)
+6. web.xml : *.do , encodingFilter
+7. src/main/resources/sqls/
+	db.properties
+	jdbc.sql
+8. applicationContext
+9. dto, dao, biz, controller
+
+_javaconfig
+10. com.mvc.update.config/ApplicationConfig <- applicationContext.xml 이 하던 일을 얘가 대신 할 것이다
+11. com.mvc.update.config/ServletConfig(impl WebMvcConfigurer)
+12. web.xml
+13. WEB-INF/spring/appServlet 삭제 후 maven update
+14. com.mvc.update.config/WebConfig (impl WebApplicationInitializer)
+
