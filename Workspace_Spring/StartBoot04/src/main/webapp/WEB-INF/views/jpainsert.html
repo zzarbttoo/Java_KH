@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>INSERT</h1>
+	
+	<form th:action="@{insertres}" method = "post">
+	
+		<table border = "1">
+			<tr>
+				<th>MYNAME</th>
+				<td><input type = "text" name = "myname"/></td>
+			</tr>
+			<tr>
+				<th>MYTITLE</th>
+				<td><input type = "text" name = "mytitle"/></td>
+			</tr>
+<tr>
+				<th>MYCONTENT</th>
+				<td><textarea rows= "10" cols = "60" name = "mycontent"></textarea></td>
+			</tr>
+<tr>
+				<td colspan="2" align = "right">
+					<input type = "submit" th:value = "save"/>
+					<input type = "button" th:value ="list" onclick  ="location.href='./list'"/>
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>
