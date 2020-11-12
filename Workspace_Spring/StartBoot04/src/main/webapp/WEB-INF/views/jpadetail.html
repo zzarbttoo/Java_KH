@@ -7,7 +7,8 @@
 <body>
 
 	<h1>detail</h1>
-
+	
+	<!-- <table th:object="${dto}"> 이런 식으로 잡으면 *{myname} 이런식으로 사용 가능 -->
 	<table border="1">
 		<tr>
 			<th>작성자</th>
@@ -22,9 +23,9 @@
 			<td><textarea readonly = "readonly" rows = "10" cols = "60" th:text="${dto.mycontent}"></textarea></td>
 		<tr>
 			<td colspan = "3">
-				<input type = "button" value = "수정" onclick = "location.href='updateform'"/>
-				<input type = "button" value = "삭제" onclick = "location.href='delete'"/>
-				<input type = "button" value = "목록" onclick = "location.href='./list'" />
+				<input type = "button" value = "수정" th:onclick = "|location.href='updateform?myno=${dto.myno}'|"/>
+				<input type = "button" value = "삭제" th:onclick = "|location.href='delete?myno=${dto.myno}'|"/>
+				<input type = "button" value = "목록" th:onclick = "location.href='./list'" />
 			</td>
 		</tr>
 
