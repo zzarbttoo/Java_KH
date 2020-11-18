@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket-echo</title>
+    <script>
+        onload=function(){
+
+            // websocket 지원 여부 확인
+            //글로벌 스코프(window) 에 websocket 이 없으면
+            if (!window.WebSocket){
+                alert('해당 브라우저는 websocket 을 지원하지 않습니다')
+                return;
+            }
+
+            // dom load
+            var inputTxt = document.getElementById('inputTxt');
+            var sendBtn = document.getElementById('sendBtn');
+            var closeBtn = document.getElementById('closeBtn');
+            var view = document.getElementById('view');
+
+            //websocket
+            //var url = 'ws://echo.websocket.org';
+            var url = "ws://210.92.58.30:3290";
+            var ws = new WebSocket(url);
+
+            /*
+
+            onopen : websocket 연결
+            ws.open(function(){
+
+            });
+            */
+
+            // (on)open : websocket 연결
+            //ws.open 보다 addEventListener가 더 빠르다
+            //하지만 on 붙었으니까 이벤트인 것을 기억해달라
+            ws.addEventListener('open', function(evt){
+
+                view.innerHTML += '<p><span style = "color : steelblue"><b>Websocekt Connected!</b></span></p>';
+            });
+
+            
+            // (on)message : 송 수신 담당
+            ws.addEventListener('message', function(evt){
+
+                console.log(evt);
+                view.innerHTML += '<p><span style = "color : hotpink">◀' + evt.data + '</span></p>';
+            });
+
+
+            // (on)close : websocket 연결 해제
+            ws.addEventListener('close', function(evt){
+
+                view.innerHTML += '<p><span style = "color : steelblue"><b>WebSocket closed</b></span></p>';
+
+            });
+
+            // (on)error : websocket 오류 처리
+            ws.addEventListener('error', function(evt){
+
+                view.innerHTML += '<p><span style = "color:red">WebSocket Error!</span></p>';
+            });
+
+            //sendBtn click
+            sendBtn.addEventListener('click' , function(){
+                var value = inputTxt.value;
+                console.log(value);
+                view.innerHTML += '<p><span style = "color : steelblue">▶' + value + '</span></p>';
+                ws.send(value);
+
+                inputTxt.value='';
+                inputTxt.focus();
+
+            });
+
+            //closeBtn click
+            closeBtn.addEventListener('click', function(){
+
+                ws.close();
+            });
+
+
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div>
+        <h1>WebSocket-echo</h1>
+        <input type = "text" id = "inputTxt" />
+        <input type = "button" id = "sendBtn" value ="sendBtn"/>
+        <input type = "button" id= "closeBtn" value = "closeBtn"/>
+        <br/>
+        <div id = "view"></div>
+    </div>
+</body>
+</html>
