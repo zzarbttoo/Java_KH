@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--form tag로는 put과 delete를 사용할 수 없다-->
+    <!-- axios를 이용하면 put 과 delete를 할 수 있다-->
+    <form action="http://localhost:3000/insert" method="POST">
+        <table border = "1">
+            <tr>
+                <td>이름</td>
+                <td><input type = "text" name = "name"/></td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td><input type = "text" name = "title"/></td>
+            </tr>       
+            <tr>
+                <td>내용</td>
+                <td><textarea cols = "40" rows = "10" name = "content"></textarea></td>
+            </tr>       
+        </table>
+        <input type = "submit" value = "제출"/>
+    </form>
+</body>
+</html>
