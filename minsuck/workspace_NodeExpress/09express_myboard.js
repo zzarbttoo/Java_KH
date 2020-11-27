@@ -4,9 +4,11 @@ var mongoose = require('mongoose');
 var Board = require('./myboard');
 var app = express();
 
+var cors = require('cors');
+
 app.use(express.json());
 app.use(express.urlencoded());
-
+app.use(cors());
 mongoose.connect("mongodb://localhost:27017", function(err) {
     if(err) {
         console.error(err);
@@ -81,9 +83,10 @@ app.put('/update', function(req, res){
         });
 });
 
-app.delete('/delete', function(req, res){
+//delete method 가 따로 body를 갖지 않기 때문에 이렇게 보내줘야함
+app.delete('/delete/:seq', function(req, res){
 
-    Board.deleteOne({seq:req.body.seq},
+    Board.deleteOne({seq:req.params.seq},
         function(err){
             if(err){
             console.error(err);
@@ -95,7 +98,7 @@ app.delete('/delete', function(req, res){
 
 });
 
-app.listen(3000, function() {
+app.listen(3001, function() {
     console.log("server started");
 });
 
