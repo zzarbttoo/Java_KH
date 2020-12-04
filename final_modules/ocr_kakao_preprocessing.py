@@ -17,7 +17,17 @@ LIMIT_BOX = 40
 #이미지 대비 높이기 
 def img_enhanced(image_path:str):
     image = cv2.imread(image_path)
-    image_enhanced = cv2.equalizeHist(image)
+    grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image_enhanced = cv2.equalizeHist(grayimg)
+
+    image_path = "{}_enhanced.PNG".format(image_path)
+    cv2.imwrite(image_path, image)
+
+    plt.imshow(image)
+    plt.show()
+
+    return image_path
+
     
 
 
@@ -27,7 +37,6 @@ def img_enhanced(image_path:str):
 def img_filter2D(image_path:str):
 
     image = cv2.imread(image_path)
-
     # sharpening 최대
     kernel = np.array([[-1.0, -1.0 , -1.0], [-1.0, 9.0, -1.0], [-1.0, -1.0, -1.0]])
     image_sharp = cv2.filter2D(image, -1, kernel)
@@ -46,8 +55,34 @@ def img_filter2D(image_path:str):
 
 
 #이미지 이진화
-def adaptivee_threadholding():
-    pass
+def adaptivee_threadholding(image_path:str):
+    image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+
+    #Adaptive Threashlding
+    max_output_value = 255
+    neighborhood_size = 99
+    subtract_from_mean = 10
+
+    image_binarized = cv2.adaptiveThreshold(
+    image,
+    max_output_value,
+    cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+    cv2.THRESH_BINARY,
+    neighborhood_size,
+    subtract_from_mean
+    )
+
+    plt.imshow(image_binarized, cmap = 'gray')
+    plt.show()
+
+    image_path = "{}_adaptive.PNG".format(image_path)
+    cv2.imwrite(image_path, image)
+    
+    return image_path
+
+    
+
+    
 
 def kakao_ocr_resize(image_path: str):
     """
@@ -91,9 +126,7 @@ def kakao_ocr(image_path: str, appkey: str):
     jpeg_image = cv2.imencode(".PNG", image)[1]
     data = jpeg_image.tobytes()
 
-
     return requests.post(API_URL, headers=headers, files={"image": data})
-
 
 
 def main(image_path, appkey):
@@ -105,10 +138,10 @@ def main(image_path, appkey):
         image_path = resize_impath
         print("원본 대신 리사이즈된 이미지를 사용합니다.")
     '''
-    #image_filter2D
-    filter2D_impath = img_filter2D(image_path)
-
-    output = kakao_ocr(image_path, appkey).json()
+    #filter2D_impath = img_filter2D(image_path)
+    #enhanced_impath = img_enhanced(image_path)
+    adaptive_impath = adaptivee_threadholding(image_path)
+    output = kakao_ocr(adaptive_impath, appkey).json()
     for i in output['result']:
         print(i['recognition_words'])
 
@@ -118,3 +151,4 @@ if __name__ == "__main__":
     #값이 넘어올 수 있도록 할 것이다
     image_path = './engTest1.PNG'
     main(image_path, appkey)
+    
