@@ -14,9 +14,6 @@
 		<h1>upload form</h1>
 		
 		<input type = "file" name = "mpfile"/><br/>
-		<p style = "color:red; font-weightLbold;">
-			<form:errors path = "mpfile"></form:errors>
-		</p>
 		<textarea rows = "10" cols = "60" name = "desc"></textarea>
 		<input type = "submit" value = "send"/>
 	</form:form>

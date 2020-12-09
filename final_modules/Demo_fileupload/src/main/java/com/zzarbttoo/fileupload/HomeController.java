@@ -44,13 +44,7 @@ public class HomeController {
 	@RequestMapping("/upload")
 	public String fileUpload(HttpServletRequest request, Model model, UploadFile uploadFile, BindingResult result) {
 		
-		
-		fileValidator.validate(uploadFile, result);
-		
-		if(result.hasErrors()) {
-			return "upload";
-		}
-		
+		if(uploadFile.getMpfile() == null) {
 		MultipartFile file = uploadFile.getMpfile();
 		String name = file.getOriginalFilename();
 		
@@ -104,6 +98,9 @@ public class HomeController {
 		}
 		
 		model.addAttribute("fileObj", fileObj);
+		}
+		
+		System.out.println(uploadFile.getDesc());
 		
 		
 		return "download";

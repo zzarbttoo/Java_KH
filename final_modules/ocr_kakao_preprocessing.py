@@ -14,6 +14,11 @@ LIMIT_BOX = 40
 #image_path = './engTest1.PNG'
 #appkey = 'f40be23a0183befcdd925726da9fa7d7'
 
+#문자열 파싱 및 문자열 처리
+def stringParsing():
+    pass
+
+
 #이미지 대비 높이기 
 def img_enhanced(image_path:str):
     image = cv2.imread(image_path)
@@ -77,7 +82,7 @@ def adaptivee_threadholding(image_path:str):
 
     image_path = "{}_adaptive.PNG".format(image_path)
     cv2.imwrite(image_path, image)
-    
+
     return image_path
 
     
@@ -149,6 +154,6 @@ def main(image_path, appkey):
 if __name__ == "__main__":
     appkey = 'f40be23a0183befcdd925726da9fa7d7'
     #값이 넘어올 수 있도록 할 것이다
-    image_path = './engTest1.PNG'
+    image_path = './test1.PNG'
     main(image_path, appkey)
     
