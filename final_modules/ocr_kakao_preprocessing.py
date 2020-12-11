@@ -14,10 +14,6 @@ LIMIT_BOX = 40
 #image_path = './engTest1.PNG'
 #appkey = 'f40be23a0183befcdd925726da9fa7d7'
 
-#문자열 파싱 및 문자열 처리
-def stringParsing():
-    pass
-
 
 #이미지 대비 높이기 
 def img_enhanced(image_path:str):
@@ -34,10 +30,6 @@ def img_enhanced(image_path:str):
     return image_path
 
     
-
-
-
-
 #이미지 선명도 높이기
 def img_filter2D(image_path:str):
 
@@ -133,27 +125,69 @@ def kakao_ocr(image_path: str, appkey: str):
 
     return requests.post(API_URL, headers=headers, files={"image": data})
 
+def string_parse(output):
 
-def main(image_path, appkey):
+    append_string = ""
 
-    '''
+    # TODO: 알맞은 문자열 처리를 진행하기
+
+    #문자열 병합 
+    for i in output:
+        append_string += i['recognition_words'][0] + " "
+
+    return append_string
+
+
+def image_main(image_path, appkey):
+
     #image_resize
     resize_impath = kakao_ocr_resize(image_path)
     if resize_impath is not None:
         image_path = resize_impath
         print("원본 대신 리사이즈된 이미지를 사용합니다.")
-    '''
+
     #filter2D_impath = img_filter2D(image_path)
     #enhanced_impath = img_enhanced(image_path)
     adaptive_impath = adaptivee_threadholding(image_path)
     output = kakao_ocr(adaptive_impath, appkey).json()
-    for i in output['result']:
-        print(i['recognition_words'])
+    append_string = string_parse(output['result'])
+
+    return append_string
+
+
+from flask import Flask
+import flask_cors
+
+app = Flask(__name__)
+flask_cors.CORS(app)
+
+# post 요청 받음
+# TODO : 사진 객체를 파라미터로 받음
+@app.route('/', methods = ['POST'])
+def image_info():
+    params = json.loads(requests.get_data(), encoding = 'utf-8')
+    print(params)
+    if len(params) == 0:
+        return 'No parameter'
 
 
 if __name__ == "__main__":
     appkey = 'f40be23a0183befcdd925726da9fa7d7'
-    #값이 넘어올 수 있도록 할 것이다
+
+    # img 값이 넘어올 수 있도록 할 것이다
     image_path = './test1.PNG'
-    main(image_path, appkey)
+    append_string = image_main(image_path, appkey)
+    app.run()
+
+
+    
+
+    
+
+    
+   
+
+
+
+
     

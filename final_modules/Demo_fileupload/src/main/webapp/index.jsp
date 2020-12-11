@@ -11,6 +11,7 @@
 <body>
 
 	<c:redirect url = "form"></c:redirect>
+	<c:redirect url = "sendflask"></c:redirect>
 	
 </body>
 </html>
