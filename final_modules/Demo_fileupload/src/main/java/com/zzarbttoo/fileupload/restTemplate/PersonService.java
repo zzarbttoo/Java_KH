@@ -1,4 +1,4 @@
-package com.zzarbttoo.restTemplate;
+package com.zzarbttoo.fileupload.restTemplate;
 
 public interface PersonService {
 

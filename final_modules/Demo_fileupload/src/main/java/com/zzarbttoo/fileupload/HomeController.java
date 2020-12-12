@@ -6,12 +6,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.http.HttpHeaders;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -22,9 +28,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
+import com.zzarbttoo.fileupload.restTemplate.PersonService;
 import com.zzarbttoo.fileupload.validate.FileValidator;
 import com.zzarbttoo.fileupload.validate.UploadFile;
-import com.zzarbttoo.restTemplate.PersonService;
 
 @Controller
 public class HomeController {
@@ -32,7 +38,8 @@ public class HomeController {
 	@Autowired
 	private FileValidator fileValidator;
 	
-	private PersonService personService;
+	//RestTemplate restTemplate = new RestTemplate();
+	//ObjectMapper objectMapper = new ObjectMapper();
 	
 
 	@RequestMapping("/form")
@@ -40,21 +47,54 @@ public class HomeController {
 		return "upload";
 	}
 
+	/*
 	// httpclient로 flask와 통신할 것이다
 	// 글자 전송 -> 파일 전송
 	@RequestMapping("/sendflask")
 	public String sendflask() {
 		
-		RestTemplate restTemplate = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
-	
+		
 		String url = "http://127.0.0.1:5000/";
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("hi", "hello");
+		String body = null;
+		
+		
+		try {
+			 body = objectMapper.writeValueAsString(params);
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if(body!=null) {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+			
+			HttpEntity entity = new HttpEntity(body, headers);
+			
+			//appId와 Access key 처리를 해줘야한다
+			ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
+			
+			System.out.println(response);
+		}
+		
+		
+		
 		
 		
 
 		return null;
 
 	}
+	
+	*/
 
 	@RequestMapping("/upload")
 	public String fileUpload(HttpServletRequest request, Model model, UploadFile uploadFile, BindingResult result) {

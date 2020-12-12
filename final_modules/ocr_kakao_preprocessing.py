@@ -156,6 +156,7 @@ def image_main(image_path, appkey):
 
 
 from flask import Flask
+from flask import request
 import flask_cors
 
 app = Flask(__name__)
@@ -165,11 +166,14 @@ flask_cors.CORS(app)
 # TODO : 사진 객체를 파라미터로 받음
 @app.route('/', methods = ['POST'])
 def image_info():
-    params = json.loads(requests.get_data(), encoding = 'utf-8')
+    
+    #body parse
+    params = json.loads(request.data, encoding='utf-8')
     print(params)
-    if len(params) == 0:
-        return 'No parameter'
 
+       #여기에 ocr 값을 넣어주면 된다
+    # string 으로 넣을 것
+    return "helloworld"
 
 if __name__ == "__main__":
     appkey = 'f40be23a0183befcdd925726da9fa7d7'
