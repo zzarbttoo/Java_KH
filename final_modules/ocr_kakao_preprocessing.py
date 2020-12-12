@@ -9,11 +9,7 @@ import numpy as np
 LIMIT_PX = 1024
 LIMIT_BYTE = 1024*1024  # 1MB
 LIMIT_BOX = 40
-
-
-#image_path = './engTest1.PNG'
-#appkey = 'f40be23a0183befcdd925726da9fa7d7'
-
+APP_KEY = "f40be23a0183befcdd925726da9fa7d7"
 
 #이미지 대비 높이기 
 def img_enhanced(image_path:str):
@@ -23,9 +19,6 @@ def img_enhanced(image_path:str):
 
     image_path = "{}_enhanced.PNG".format(image_path)
     cv2.imwrite(image_path, image)
-
-    plt.imshow(image)
-    plt.show()
 
     return image_path
 
@@ -170,17 +163,27 @@ def image_info():
     #body parse
     params = json.loads(request.data, encoding='utf-8')
     print(params)
+    print(type(params))
+    filename=params['filename']
+    path = params['path']
+    filepath = path + filename
+    print(filepath)
 
-       #여기에 ocr 값을 넣어주면 된다
+    image = cv2.imread(filepath)
+
+    plt.imshow(image)
+    plt.show()
+
+    append_string = image_main(filepath, APP_KEY)
+    print(append_string)
     # string 으로 넣을 것
-    return "helloworld"
+    return append_string
 
 if __name__ == "__main__":
-    appkey = 'f40be23a0183befcdd925726da9fa7d7'
 
     # img 값이 넘어올 수 있도록 할 것이다
-    image_path = './test1.PNG'
-    append_string = image_main(image_path, appkey)
+
+    #append_string = image_main(image_path, appkey)
     app.run()
 
 
