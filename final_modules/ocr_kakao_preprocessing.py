@@ -11,6 +11,7 @@ LIMIT_BYTE = 1024*1024  # 1MB
 LIMIT_BOX = 40
 APP_KEY = "f40be23a0183befcdd925726da9fa7d7"
 
+#TODO : 이미지 저장 위치 및 io 처리 
 #이미지 대비 높이기 
 def img_enhanced(image_path:str):
     image = cv2.imread(image_path)

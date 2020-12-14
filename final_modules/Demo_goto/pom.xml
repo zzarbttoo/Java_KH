@@ -127,7 +127,20 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.8.5</version>
 		</dependency>
+		<!--iamport-rest-client-java-hc -->
+		<dependency>
+			<groupId>com.github.iamport</groupId>
+			<artifactId>iamport-rest-client-java-hc</artifactId>
+			<version>0.0.2</version>
+		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
