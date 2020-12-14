@@ -9,9 +9,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.siot.IamportRestHttpClientJava.response.IamportResponse;
-import com.siot.IamportRestHttpClientJava.response.Payment;
 
 @Controller
 public class PayingController {
@@ -51,26 +51,24 @@ public class PayingController {
 			try {
 				//System.out.println(iamportClient.paymentByImpUid(map.get("imp_uid")));
 				apiResponse = iamportClient.paymentByImpUid(ajaxmap.get("imp_uid"));
-				resultMap = mapper.readValue(apiResponse, Map.class);
-				try {
-					realResponse = mapper.readValue(resultMap.get("response"), Map.class);
-					realAmount = realResponse.get("amount");
-					System.out.println(realAmount);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				System.out.println(apiResponse);
+				System.out.println(apiResponse.getClass());
+				
+				Object obj = parser.parse(apiResponse);
+				JsonObject jsonObj = (JsonObject) obj;
+				JsonElement response = jsonObj.get("response");
+				realAmount = response.getAsJsonObject().get("amount").getAsString();
+				System.out.println(realAmount);
+				
+				
+				
+			
 				
 				
 				
 				
-				
-				
-				
-				
-				
-				
-				
-				
+			
+							
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
