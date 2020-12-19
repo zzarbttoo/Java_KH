@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public void home() {
+	@RequestMapping("/home.do")
+	public String home() {
 		
 		//AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		return "home";
 		
 	}
 	
